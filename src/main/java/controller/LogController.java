@@ -30,7 +30,7 @@ public class LogController {
     }
 
     public class LoginListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             String cf = "";
@@ -54,7 +54,6 @@ public class LogController {
                             view.displayErrorMessage("Username or password not matched");
 
                         } else {
-                            /*RICORDATI CHE POI DEVI ISTANZIARE ANCHE IL CONTROLLER*/
                             DoctorWelcomePage general = new DoctorWelcomePage();
                             WelcomeDoctorController generalController = new WelcomeDoctorController(general, gp);
                             general.setVisible(true);

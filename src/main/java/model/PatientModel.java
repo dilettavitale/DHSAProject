@@ -18,13 +18,25 @@ public class PatientModel extends UserModel {
         pdb = new PatientDB();
 
     }
-
+    
+/**
+ * This method returns the patient (application user) with this fiscal code and password.It uses the findUser method defined in the PatientDB class.
+ * @param cf
+ * @param password
+ * @return pm
+ * @throws Exception 
+ */
     @Override
     public UserModel findUser(String cf, String password) throws Exception {
         PatientModel pm = (PatientModel) pdb.findUser(cf, password);
         return pm;
     }
 
+    /**
+     * This method searches the patient (in FHIR) with this fiscal code
+     * @param cf
+     * @return patient
+     */
     public Patient getPatient(String cf) {
         FHIR conn = new FHIR();
         IGenericClient client = conn.FHIRConnection();

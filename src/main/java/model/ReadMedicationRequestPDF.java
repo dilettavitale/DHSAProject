@@ -14,10 +14,6 @@ import java.util.regex.Pattern;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 
-/**
- *
- * @author danto
- */
 public class ReadMedicationRequestPDF extends ReadGenericPDF {
 
     FhirClient client;
@@ -37,8 +33,6 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
     }
 
     private void extractInformationMedicalPrescription(String text,Patient p,Practitioner pr) throws ParseException {
-        // Compile the regular expression
-        //GLI ESAMI SONO TUTTE LE PAROLE IN CAPSLOCK DEL TESTO
         List<String> commonDrugs = Arrays.asList("PARACETAMOLO", "IBUPROFENE", "ASPIRINA", "AMOXICILLINA", "LOSARTAN",
                 "ATORVASTATINA", "ENALAPRIL", "RAMIPRIL", "BISOPROLOLO", "OMEPRAZOLO",
                 "CLOPIDOGREL", "LEVOTIROXINA", "METFORMINA", "ACIDO ACETILSALICILICO",
@@ -46,10 +40,6 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
 
         SimpleDateFormat dataformat = new SimpleDateFormat("dd/M/yyyy");
         Date dataprescrizione = null;
-        //CODICE FISCALE DEL PAZIENTE DA CUI FARE UNA SEARCH POI
-        // DATA RILASCIO 
-        // MEDICINE 
-        // 
         Pattern pattern = Pattern.compile("CODICE FISCALE MEDICO:\\s*(\\w+)");
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
@@ -74,7 +64,7 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
             pattern = Pattern.compile(i + ".*(\r?\n)");
             matcher = pattern.matcher(text);
             if (matcher.find()) {
-                //  SE E' STATO TROVATO DA MANDARE A FHIR INSIEME A TUTTI GLI ALTRI DATI
+                // IF A DRUG IS FIND SEND IT TO FHIR SERVER ENCAPSULATING IT IN A MEDICAL PRESCRIPTION
                 String drugs = matcher.group();
                 pattern = Pattern.compile("(\\d+[.,]?\\d*\\s*(mg|g))", Pattern.CASE_INSENSITIVE);
                 Matcher m = pattern.matcher(drugs);//SEARCH FOR DOSE IN MG OR G
@@ -82,12 +72,9 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
                     String dose = m.group();
                     client.set_medprescription_OnFhir(i,dose , dataprescrizione,p,pr);
                     System.out.println("Drugs: " + drugs + " dose: " + dose);
-                    //la dose si riferisce al medicinale i
                 }
             }
         }
-        
-        
-
+ 
     }
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -11,16 +8,12 @@ import org.hl7.fhir.r4.model.MedicationRequest;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 
-/**
- *
- * @author immacolata
- */
 public class OneMedicationRequestModel {
 
     public OneMedicationRequestModel() {
     }
 
-    //deve prendere il nome della ricetta, cercarla e restituire il general practitioner
+    //TAKE NAMES OF PRESCRIPTION, SEARCH IT AND RETURN IT
     public String findMedRequest(String nameMedRequest, String cf) {
         String nameGP = "";
         FHIR conn = new FHIR();
@@ -29,7 +22,6 @@ public class OneMedicationRequestModel {
         Bundle response = client.search()
                 .forResource(MedicationRequest.class)
                 .where(MedicationRequest.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(cf)))
-                //.and(MedicationRequest.MEDICATION.hasChainedProperty(nameGP, theCriterion))
                 .returnBundle(Bundle.class)
                 .execute();
 

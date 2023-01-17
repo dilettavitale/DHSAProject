@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package modelfactory;
 
 import model.GeneralModel;
 import model.PatientModel;
 import model.UserModel;
 
-/**
- *
- * @author immacolata
- */
 public abstract class UserFactory {
     
    
@@ -35,9 +28,6 @@ public abstract class UserFactory {
         System.out.println("v: " +v);
         return v;
     }
-    
-    // This is the "factory method"
+    // FACTORY METHOD
     protected abstract UserModel selectRole(Role role);
-    
-    
 }

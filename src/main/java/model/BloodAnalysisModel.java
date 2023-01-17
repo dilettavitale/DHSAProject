@@ -22,11 +22,9 @@ import view.BloodAnalysisView;
  */
 public class BloodAnalysisModel {
     private Patient patient;
-    //private BloodAnalysisView bav;
 
     public BloodAnalysisModel(Patient patient) {
         this.patient = patient;
-        //this.bav = bav;
     }
     
     public ArrayList listBloodAnalysis() {
@@ -47,7 +45,6 @@ public class BloodAnalysisModel {
             DiagnosticReport dr = (DiagnosticReport) c.getResource();
             String date = null;
             DateTimeType dt = dr.getEffectiveDateTimeType();
-            //System.out.println(dr.getEffectiveDateTimeType());
             if (dr.getEffectiveDateTimeType()!=null){
                 date = dr.getEffectiveDateTimeType().asStringValue();
             }

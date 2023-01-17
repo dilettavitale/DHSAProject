@@ -46,26 +46,8 @@ public class ReadGenericPDF {
                 System.out.println();
             }
             System.out.println("\n\n----------- Information extracted from the text -----------\n\n");
-            extractGeneralInformation(totaltext);
         }
         return totaltext;
     }
 
-    public void extractGeneralInformation(String text) {
-        Pattern pattern = Pattern.compile("Medico :\\s*(\\w+)\\s+(\\w+)");
-        Matcher matcher = pattern.matcher(text);
-        if (matcher.find()) {
-            String nomeMedico = matcher.group(1);     
-            String cognomeMedico = matcher.group(2);
-            System.out.println("Nome e cognome del medico: " + nomeMedico + " " + cognomeMedico);
-        }
-
-        pattern = Pattern.compile("NOME DEL MEDICO:\\s*(\\w+)\\s+(\\w+)");
-        matcher = pattern.matcher(text);
-        if (matcher.find()) {
-            String nomeMedico = matcher.group(1);
-            String cognomeMedico = matcher.group(2);
-            System.out.println("Nome e cognome del medico: " + nomeMedico + " " + cognomeMedico);
-        }
-    }
 }

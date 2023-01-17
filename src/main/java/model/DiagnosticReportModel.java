@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -19,21 +15,15 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Reference;
 import view.DiagnosticReportView;
 
-/**
- *
- * @author dilet
- */
 public class DiagnosticReportModel {
 
     private Patient patient;
-    //private DiagnosticReportView view;
     private String dtt;
     private HashMap<String, String> exams = new HashMap<>();
     private String drLink;
 
     public DiagnosticReportModel(Patient patient, String dtt) {
         this.patient = patient;
-        //this.view = view;
         this.dtt = dtt;
         this.drLink = search();
 
@@ -71,9 +61,7 @@ public class DiagnosticReportModel {
             String analysis = o.getCode().getCoding().get(0).getDisplay();
             BigDecimal bd;
             bd = o.getValueQuantity().getValue();
-            //bd = bd.setScale(2, RoundingMode.UP);
             String value = bd.toString();
-            //System.out.println(analysis + " " + value);
             exams.put(analysis, value);
 
         }

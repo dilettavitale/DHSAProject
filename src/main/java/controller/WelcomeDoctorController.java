@@ -50,23 +50,22 @@ public class WelcomeDoctorController {
         this.view.setJList(jlp);
         this.view.setVisible(true);
         this.practitioner = wdm.getP();
-        //inizializeView();
+
         this.view.addJListListener(new JMouseListListener());
 
-        //inizializeView();
     }
 
     public WelcomeDoctorModel getWdm() {
         return wdm;
     }
-    
 
     public class JListPatients extends AbstractListModel {
+
         String[] strings;
+
         public JListPatients(String[] strings) {
-            this.strings=strings;
+            this.strings = strings;
         }
-         
 
         @Override
         public int getSize() {
@@ -86,7 +85,7 @@ public class WelcomeDoctorController {
             String value = view.getListSelected();
             String splits[] = value.split("\\s+");
             int len = splits.length - 1;
-            PatientPFromDocController pp = new PatientPFromDocController(splits[len],practitioner);
+            PatientPFromDocController pp = new PatientPFromDocController(splits[len], practitioner);
 
         }
 

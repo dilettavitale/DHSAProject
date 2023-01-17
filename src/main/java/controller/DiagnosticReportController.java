@@ -33,7 +33,7 @@ class DiagnosticReportController {
     private String dateS;
     private DateTimeType dtt;
     private DiagnosticReportModel drm;
-    private DiagnosticReportView view= new DiagnosticReportView();
+    private DiagnosticReportView view = new DiagnosticReportView();
     private HashMap<String, String> exams;
     private String drLink;
 
@@ -41,7 +41,7 @@ class DiagnosticReportController {
         this.patient = patient;
         this.dateS = value;
         this.dtt = createDateTimeType(value);
-        this.drm = new DiagnosticReportModel(patient,value);
+        this.drm = new DiagnosticReportModel(patient, value);
         this.exams = this.drm.getExams();
         setValues();
         String date = dateS.substring(0, 10);
@@ -49,17 +49,13 @@ class DiagnosticReportController {
         this.view.addJSONListener(new JSONListener());
         this.drLink = this.drm.getDrLink();
         this.view.setVisible(true);
-        
-        
-        
 
     }
-    
-        public class JSONListener implements ActionListener {
+
+    public class JSONListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
 
             String link1 = drLink;
 
@@ -67,7 +63,7 @@ class DiagnosticReportController {
                 Desktop desktop = Desktop.getDesktop();
                 try {
                     desktop.browse(new java.net.URI(link1));
-                    //desktop.browse(new java.net.URI(link2));
+
                 } catch (IOException exio) {
                     exio.printStackTrace();
                 } catch (URISyntaxException ex) {
@@ -105,8 +101,7 @@ class DiagnosticReportController {
         this.view.setLY(this.exams.get("LY"));
         this.view.setGREO(this.exams.get("GREO"));
         this.view.setMO(this.exams.get("MO"));
-        
-        
+
     }
 
 }

@@ -56,7 +56,6 @@ public class OneMedicationRequestController {
                 Desktop desktop = Desktop.getDesktop();
                 try {
                     desktop.browse(new java.net.URI(link));
-                    //desktop.browse(new java.net.URI(link2));
                 } catch (IOException exio) {
                     exio.printStackTrace();
                 } catch (URISyntaxException ex) {

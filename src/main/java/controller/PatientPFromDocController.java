@@ -66,7 +66,7 @@ public class PatientPFromDocController {
                 Desktop desktop = Desktop.getDesktop();
                 try {
                     desktop.browse(new java.net.URI(link1));
-                    //desktop.browse(new java.net.URI(link2));
+
                 } catch (IOException exio) {
                     exio.printStackTrace();
                 } catch (URISyntaxException ex) {
@@ -92,8 +92,7 @@ public class PatientPFromDocController {
                 String filename = f.getAbsolutePath();
                 //filePath.setText(filename);
                 ReadMedicationRequestPDF medRequest = new ReadMedicationRequestPDF(f);
-                medRequest.extractInformation(patient,pr);
-                
+                medRequest.extractInformation(patient, pr);
 
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());

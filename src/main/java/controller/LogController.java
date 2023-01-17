@@ -20,6 +20,7 @@ import view.PatientView;
  * @author immacolata
  */
 public class LogController {
+
     private final Login view;
 
     public LogController(Login view) {
@@ -37,48 +38,39 @@ public class LogController {
             String role = "";
             try {
                 cf = view.getCf();
-                
+
                 password = view.getPassowrd();
-                
+
                 role = view.getRole();
-                
-                System.out.println("LOGIN CONTROLLER");
-                System.out.println(cf);
-                System.out.println(password);
-                System.out.println(role);
-                System.out.println("-----------------");
-                
-                
-                
+
                 switch (role) {
                     case "General practitioner": {
-                        System.out.println("SONO NEL RUOLO GENERALP");
-                        
+
                         UserFactory generalp = new GeneralFactory();
-                        UserModel gp = generalp.build(UserFactory.Role.GENERAL_PRACTITIONER,cf,password);
-                        System.out.println("STO CERCANDO : "+gp);
-                        gp =  gp.findUser(gp.getCf(),gp.getPassword());
+                        UserModel gp = generalp.build(UserFactory.Role.GENERAL_PRACTITIONER, cf, password);
+
+                        gp = gp.findUser(gp.getCf(), gp.getPassword());
                         if (gp == null) {
                             view.displayErrorMessage("Username or password not matched");
-                            
+
                         } else {
                             /*RICORDATI CHE POI DEVI ISTANZIARE ANCHE IL CONTROLLER*/
                             DoctorWelcomePage general = new DoctorWelcomePage();
-                            WelcomeDoctorController generalController = new WelcomeDoctorController(general,gp);
+                            WelcomeDoctorController generalController = new WelcomeDoctorController(general, gp);
                             general.setVisible(true);
                             view.setVisible(false);
                         }
                         break;
                     }
                     case "Patient": {
-                        System.out.println("SONO NEL RUOLO PATIENT");
+
                         UserFactory patientFactory = new PatientFactory();
-                        UserModel patient = patientFactory.build(UserFactory.Role.PATIENT,cf,password);
-                        System.out.println("STO CERCANDO : "+ patient);
+                        UserModel patient = patientFactory.build(UserFactory.Role.PATIENT, cf, password);
+
                         patient = patient.findUser(patient.getCf(), patient.getPassword());
-                        if (patient== null) {
+                        if (patient == null) {
                             view.displayErrorMessage("Username or password not matched");
-                        }else {
+                        } else {
                             PatientView pv = new PatientView();
                             PatientController controllerHome = new PatientController(pv, (PatientModel) patient);
                             pv.setVisible(true);
@@ -86,7 +78,7 @@ public class LogController {
                         }
                         break;
                     }
-    
+
                     default:
                         break;
                 }
@@ -96,6 +88,5 @@ public class LogController {
             }
         }
     }
-
 
 }

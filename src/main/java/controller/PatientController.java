@@ -48,7 +48,6 @@ public class PatientController {
         this.view.setLabelname(model.FindNomePatient(pt));
         this.view.addMedicationRequestListener(new MedicationRequestListener(pt));
         view.setVisible(true);
-        System.out.println("SONO NEL PATIENT CONTROLLER con questo paziente" + model);
 
     }
 
@@ -66,7 +65,6 @@ public class PatientController {
                 CallPatientModel call = new CallPatientModel();
                 cfGeneral = call.findSkypeGeneral(cf);
                 linkGP = call.constructSkypeLink(nameSkype);
-                System.out.println(linkGP);
 
                 if (Desktop.isDesktopSupported()) {
                     Desktop desktop = Desktop.getDesktop();
@@ -83,7 +81,7 @@ public class PatientController {
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+
                 view.displayErrorMessage(ex.getMessage());
             }
         }
@@ -99,12 +97,12 @@ public class PatientController {
                 chooser.showOpenDialog(null);
                 File f = chooser.getSelectedFile();
                 String filename = f.getAbsolutePath();
-                //filePath.setText(filename);
+
                 ReadBloodCountPDF bloodCount = new ReadBloodCountPDF(f);
                 bloodCount.extractInformation(pt);
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+
                 view.displayErrorMessage(ex.getMessage());
             }
         }
@@ -122,7 +120,7 @@ public class PatientController {
         public void actionPerformed(ActionEvent e) {
 
             try {
-                MedicationRequestController bav = new MedicationRequestController(this.patient,model);
+                MedicationRequestController bav = new MedicationRequestController(this.patient, model);
 
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());

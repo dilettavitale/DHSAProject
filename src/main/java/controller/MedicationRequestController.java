@@ -32,7 +32,6 @@ public class MedicationRequestController {
         this.model = model;
         this.medReqM = new MedicationRequestModel(patient);
         ArrayList<MedicationRequestModel.RowTable> list = this.medReqM.listMedRequest(model);
-        //String [][] table =this.medReqM.initializeView();
         this.medReqView.setTable(list);
         this.medReqView.setVisible(true);
         this.medReqView.addSelectionMouseListener(new MedicationRequestListener());
@@ -48,18 +47,18 @@ public class MedicationRequestController {
         public void mouseClicked(MouseEvent me) {
             String col1 = "";
             String col2 = "";
-            String col3="";
+            String col3 = "";
             String col4 = "";
             String col5 = "";
             col1 = medReqView.getcolNameValue();
             col2 = medReqView.getcolDateValue();
-            col3=medReqView.getcolStatusValue();
-            col4= medReqView.getcolLinkValue();
-            col5= medReqView.getcolRequesterValue();
+            col3 = medReqView.getcolStatusValue();
+            col4 = medReqView.getcolLinkValue();
+            col5 = medReqView.getcolRequesterValue();
             if ((col1.length() != 0) && (col2.length() != 0)) {
                 JOptionPane.showMessageDialog(null, "Contenuto riga selezionata: " + col1 + " " + col2);
                 OneMedicationRequestView oneMedicationView = new OneMedicationRequestView();
-                OneMedicationRequestController oneMedication = new OneMedicationRequestController(oneMedicationView, col1, col2,col3,col4,col5, model);
+                OneMedicationRequestController oneMedication = new OneMedicationRequestController(oneMedicationView, col1, col2, col3, col4, col5, model);
                 oneMedicationView.setVisible(true);
                 medReqView.setVisible(false);
             }

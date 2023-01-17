@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package modelfactory;
 
 import model.GeneralModel;
 import model.PatientModel;
 
-/**
- *
- * @author immacolata
- */
 public class PatientFactory extends UserFactory {
 
     @Override
@@ -21,6 +14,5 @@ public class PatientFactory extends UserFactory {
             default:
                 return null;
         }
-    }
-    
+    }  
 }

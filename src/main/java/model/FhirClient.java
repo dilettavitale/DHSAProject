@@ -189,7 +189,7 @@ public class FhirClient {
                 }
     }
 
-    private boolean isInvalidKey(String key) {
+    private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE
         return key.equals("CODICE FISCALE") || key.equals("MEDICO") || key.equals("CODICE LABORATORIO") || key.equals("EMOCROMOCITOMETRICO") || key.equals("DATA");
     }
 

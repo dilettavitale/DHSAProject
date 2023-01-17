@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -16,10 +12,7 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 import view.BloodAnalysisView;
 
-/**
- *
- * @author dilet
- */
+
 public class BloodAnalysisModel {
     private Patient patient;
 

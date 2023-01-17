@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package modelfactory;
 
 import model.GeneralModel;
 import model.UserModel;
 
-/**
- *
- * @author immacolata
- */
 public class GeneralFactory extends UserFactory {
     @Override
     protected GeneralModel selectRole(Role role) {
@@ -21,6 +14,4 @@ public class GeneralFactory extends UserFactory {
                 return null;
         }
     }
-
-
 }

@@ -26,14 +26,14 @@ import view.DiagnosticReportView;
 public class DiagnosticReportModel {
 
     private Patient patient;
-    private DiagnosticReportView view;
+    //private DiagnosticReportView view;
     private String dtt;
     private HashMap<String, String> exams = new HashMap<>();
     private String drLink;
 
-    public DiagnosticReportModel(Patient patient, DiagnosticReportView view, String dtt) {
+    public DiagnosticReportModel(Patient patient, String dtt) {
         this.patient = patient;
-        this.view = view;
+        //this.view = view;
         this.dtt = dtt;
         this.drLink = search();
 

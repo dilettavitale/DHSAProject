@@ -26,13 +26,13 @@ import view.MedicationRequestView;
 public class MedicationRequestModel {
 
     private Patient patient;
-    private MedicationRequestView medReqView;
+    //private MedicationRequestView medReqView;
     private List<MedicationRequest> med = new ArrayList();
 
 
-    public MedicationRequestModel(Patient patient, MedicationRequestView medReqView) {
+    public MedicationRequestModel(Patient patient) {
         this.patient = patient;
-        this.medReqView = medReqView;
+        //this.medReqView = medReqView;
     }
 
     public class RowTable {

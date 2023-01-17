@@ -22,11 +22,11 @@ import view.BloodAnalysisView;
  */
 public class BloodAnalysisModel {
     private Patient patient;
-    private BloodAnalysisView bav;
+    //private BloodAnalysisView bav;
 
-    public BloodAnalysisModel(Patient patient,BloodAnalysisView bav) {
+    public BloodAnalysisModel(Patient patient) {
         this.patient = patient;
-        this.bav = bav;
+        //this.bav = bav;
     }
     
     public ArrayList listBloodAnalysis() {

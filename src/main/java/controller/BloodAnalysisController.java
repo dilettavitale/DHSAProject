@@ -29,7 +29,7 @@ public class BloodAnalysisController {
 
     public BloodAnalysisController(Patient patient) {
         this.patient = patient;
-        this.bam = new BloodAnalysisModel(patient, bav);
+        this.bam = new BloodAnalysisModel(patient);
         ArrayList<String> table = this.bam.listBloodAnalysis();
         this.bav.setTable(table);
         this.bav.addTableListener(new JMouseTableListener());

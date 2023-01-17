@@ -41,7 +41,7 @@ class DiagnosticReportController {
         this.patient = patient;
         this.dateS = value;
         this.dtt = createDateTimeType(value);
-        this.drm = new DiagnosticReportModel(patient,view,value);
+        this.drm = new DiagnosticReportModel(patient,value);
         this.exams = this.drm.getExams();
         setValues();
         String date = dateS.substring(0, 10);

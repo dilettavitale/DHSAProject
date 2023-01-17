@@ -25,12 +25,12 @@ import view.PatientPage;
  */
 public class WelcomeDoctorModel {
 
-    private DoctorWelcomePage view;
+    //private DoctorWelcomePage view;
     private UserModel gp;
     private Practitioner p;
 
-    public WelcomeDoctorModel(DoctorWelcomePage view, UserModel gp) {
-        this.view = view;
+    public WelcomeDoctorModel(UserModel gp) {
+        //this.view = view;
         this.gp = gp;
 
         

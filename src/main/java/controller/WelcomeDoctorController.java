@@ -42,7 +42,7 @@ public class WelcomeDoctorController {
     public WelcomeDoctorController(DoctorWelcomePage view, UserModel gp) {
         this.view = view;
         this.doctor = gp;
-        this.wdm = new WelcomeDoctorModel(view, gp);
+        this.wdm = new WelcomeDoctorModel(gp);
         String name = this.wdm.inizilizeName();
         this.view.setName(name);
         String array[] = this.wdm.inizializeJList();

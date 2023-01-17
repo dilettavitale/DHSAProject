@@ -39,7 +39,7 @@ public class PatientPFromDocController {
     public PatientPFromDocController(String cf, Practitioner pr) {
         this.cf = cf;
         this.pr = pr;
-        this.ppfdm = new PatientPFromDocModel(cf, page);
+        this.ppfdm = new PatientPFromDocModel(cf);
         this.skypeid = ppfdm.getSkypeid();
 
         ArrayList<String> l = this.ppfdm.inizializeView();

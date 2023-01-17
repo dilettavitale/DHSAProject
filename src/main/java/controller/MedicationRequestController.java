@@ -30,7 +30,7 @@ public class MedicationRequestController {
     public MedicationRequestController(Patient patient, PatientModel model) {
         this.patient = patient;
         this.model = model;
-        this.medReqM = new MedicationRequestModel(patient, medReqView);
+        this.medReqM = new MedicationRequestModel(patient);
         ArrayList<MedicationRequestModel.RowTable> list = this.medReqM.listMedRequest(model);
         //String [][] table =this.medReqM.initializeView();
         this.medReqView.setTable(list);

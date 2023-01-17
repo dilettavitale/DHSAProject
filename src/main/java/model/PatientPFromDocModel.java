@@ -36,13 +36,13 @@ public class PatientPFromDocModel {
 
     private String cf;
     private String skypeid;
-    private PatientPage page;
+    //private PatientPage page;
     private Patient patient;
 
-    public PatientPFromDocModel(String cf,PatientPage page) {
+    public PatientPFromDocModel(String cf) {
         //To change body of generated methods, choose Tools | Templates.
         this.cf = cf;
-        this.page =page;
+        //this.page =page;
         FindSkypeDB fsdb = new FindSkypeDB();
         this.skypeid = fsdb.SkypeName(cf);
 

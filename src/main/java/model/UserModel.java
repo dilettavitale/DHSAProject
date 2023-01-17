@@ -28,15 +28,15 @@ public abstract class UserModel implements Serializable {
         return password;
     }
 
-    public void setUsername(String username) {
-        this.cf = username;
+    public void setCf(String cf) {
+        this.cf =cf ;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public abstract UserModel findUser(String username, String password) throws Exception;
+    public abstract UserModel findUser(String cf, String password) throws Exception;
 
     @Override
     public String toString() {

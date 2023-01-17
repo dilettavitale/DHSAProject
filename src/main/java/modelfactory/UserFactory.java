@@ -30,7 +30,7 @@ public abstract class UserFactory {
     
     public UserModel build(Role role, String cf,String password) {
         UserModel v = selectRole(role);
-        v.setUsername(cf);
+        v.setCf(cf);
         v.setPassword(password);
         System.out.println("v: " +v);
         return v;

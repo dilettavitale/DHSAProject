@@ -22,7 +22,6 @@ public class PatientModel extends UserModel {
     @Override
     public UserModel findUser(String cf, String password) throws Exception {
         PatientModel pm = (PatientModel) pdb.findUser(cf, password);
-        System.out.println("HO CERCATO" + pm);
         return pm;
     }
 
@@ -37,7 +36,6 @@ public class PatientModel extends UserModel {
                 .returnBundle(Bundle.class)
                 .execute();
 
-        System.out.println("Found " + response.getEntry().size() + " with this cf'");
         for (Bundle.BundleEntryComponent c : response.getEntry()) {
             Patient p = (Patient) c.getResource();
             this.patient=p;

@@ -39,7 +39,6 @@ public class WelcomeDoctorModel {
                 .execute();
         Practitioner pr = (Practitioner) response.getEntry().get(0).getResource();
         this.p = pr;
-        System.out.println("sono in welcome model");
         return pr.getName().get(0).getNameAsSingleString();
         
     }
@@ -53,15 +52,12 @@ public class WelcomeDoctorModel {
                 .where(Patient.GENERAL_PRACTITIONER.hasChainedProperty(Organization.IDENTIFIER.exactly().identifier(gp.getCf())))
                 .returnBundle(Bundle.class)
                 .execute();
-        System.out.println("sto facendo la jlist");
 
         ArrayList names = new ArrayList<String>();
 
         for (Bundle.BundleEntryComponent c : response.getEntry()) {
             Patient p = (Patient) c.getResource();
             names.add(p.getName().get(0).getNameAsSingleString() + " " + p.getIdentifierFirstRep().getValue());
-            System.out.println(p.getId());
-            System.out.println("\n");
 
         }
         String[] array = (String[]) names.toArray(new String[0]);

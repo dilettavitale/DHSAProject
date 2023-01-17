@@ -1,4 +1,3 @@
-
 package model;
 
 import connectionDB.ConnectionSingleton;
@@ -10,23 +9,22 @@ import java.sql.Statement;
 
 public class GeneralDB implements userDB {
 
-       
     private Connection conn;
     private static PreparedStatement pst;
     private static ResultSet rs;
     private static Statement st;
 
     public GeneralDB() {
-      
+
     }
 
     @Override
     public UserModel findUser(String cf, String password) {
         try {
-            conn =ConnectionSingleton.getInstance();
+            conn = ConnectionSingleton.getInstance();
             if (!cf.equals("") && !password.equals("")) {
                 String query = "SELECT * FROM `users` WHERE cf=? and password=?";
-                System.out.println("sono qui");
+
                 pst = conn.prepareStatement(query);
                 pst.setString(1, cf);
                 pst.setString(2, password);
@@ -46,8 +44,14 @@ public class GeneralDB implements userDB {
             System.out.println(ex.getMessage());
             return null;
         } finally {
-                try { rs.close(); } catch (SQLException e) { }
-                try { pst.close(); } catch (SQLException e) { }
+            try {
+                rs.close();
+            } catch (SQLException e) {
             }
+            try {
+                pst.close();
+            } catch (SQLException e) {
+            }
+        }
     }
 }

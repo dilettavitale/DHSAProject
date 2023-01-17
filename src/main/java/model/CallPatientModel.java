@@ -1,4 +1,3 @@
-
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -12,13 +11,11 @@ public class CallPatientModel {
     private FindSkypeDB skypeDB;
     String cfGeneral = "";
     String nameSkype = "";
-    String linkSkype="";
+    String linkSkype = "";
     String link = "skype:";
-
 
     public CallPatientModel() {
         skypeDB = new FindSkypeDB();
-
 
     }
 
@@ -34,26 +31,25 @@ public class CallPatientModel {
                 .returnBundle(Bundle.class)
                 .execute();
 
-        System.out.println("Found " + response.getEntry().size() + " with this cf'");
         for (Bundle.BundleEntryComponent c : response.getEntry()) {
             Patient p = (Patient) c.getResource();
-            System.out.println("Name= " + p.getName().get(0).getNameAsSingleString());
+
             f = (Practitioner) p.getGeneralPractitionerFirstRep().getResource();
             cfGeneral = f.getIdentifierFirstRep().getValue();
-            System.out.println("codice fiscale medico " + cfGeneral);
+
             FindSkypeDB skype = new FindSkypeDB();
             nameSkype = skype.SkypeName(cfGeneral);
-            System.out.println("Skype del mio medico " + nameSkype);
 
         }
         return nameSkype;
 
     }
-    public String constructSkypeLink(String namSkype){
-        linkSkype=link+nameSkype+"?call"; 
-        
+
+    public String constructSkypeLink(String namSkype) {
+        linkSkype = link + nameSkype + "?call";
+
         return linkSkype;
-        
+
     }
 
 }

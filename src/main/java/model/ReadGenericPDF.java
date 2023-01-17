@@ -34,10 +34,7 @@ public class ReadGenericPDF {
                 String text = stripper.getText(document);
                 totaltext += text;
                 String textLenghtString = String.format("Text lenght of page %d:", p);
-                System.out.println(textLenghtString);
-                System.out.println(text.length() + "\n");
                 String pageStr = String.format("page %d:", p);
-                System.out.println(pageStr);
                 for (int i = 0; i < pageStr.length(); ++i) {
                     System.out.print("-");
                 }

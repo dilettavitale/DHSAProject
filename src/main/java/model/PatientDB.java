@@ -26,7 +26,6 @@ public class PatientDB implements userDB {
             conn =ConnectionSingleton.getInstance();
             if (!cf.equals("") && !password.equals("")) {
                 String query = "SELECT * FROM `users` WHERE cf=? and password=?";
-                System.out.println("sono qui");
                 pst = conn.prepareStatement(query);
                 pst.setString(1, cf);
                 pst.setString(2, password);

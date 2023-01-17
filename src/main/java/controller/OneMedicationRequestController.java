@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.OneMedicationRequestModel;
 import model.PatientModel;
 import view.OneMedicationRequestView;
 import view.PatientPage;
@@ -23,7 +22,6 @@ import view.PatientPage;
 public class OneMedicationRequestController {
 
     private final OneMedicationRequestView oneMedicationView;
-    private final OneMedicationRequestModel oneMedicationModel = new OneMedicationRequestModel();
     private final String nameMedRequest;
     private final String date;
     private final String status;
@@ -43,7 +41,6 @@ public class OneMedicationRequestController {
         this.oneMedicationView.setLabelDate(date);
         this.oneMedicationView.setLabelStatus(status);
         this.oneMedicationView.setLabelPractitioner(practitioner);
-        oneMedicationModel.findMedRequest(nameMedRequest, p.getCf());
         this.oneMedicationView.addJSONListener(new OneMedicationRequestController.JSONListener());
     }
 

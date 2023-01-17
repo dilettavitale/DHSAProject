@@ -44,20 +44,17 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String codiceFiscale = matcher.group(1);
-            System.out.println("Codice Fiscale Medico: " + codiceFiscale);
         }
         pattern = Pattern.compile("[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
             String codiceFiscale = matcher.group();
-            System.out.println("Codice fiscale Paziente: " + codiceFiscale);
         }
         pattern = Pattern.compile("DATA:\\s*(\\d{2}/\\d{2}/\\d{4})");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
             String data = matcher.group(1);
             dataprescrizione = dataformat.parse(data);
-            System.out.println("Data prescrizione: " + dataprescrizione);
         }
 
         for (String i : commonDrugs) {
@@ -71,7 +68,6 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
                 if (m.find()) {
                     String dose = m.group();
                     client.set_medprescription_OnFhir(i,dose , dataprescrizione,p,pr);
-                    System.out.println("Drugs: " + drugs + " dose: " + dose);
                 }
             }
         }

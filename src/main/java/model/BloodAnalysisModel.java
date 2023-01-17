@@ -1,4 +1,3 @@
-
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -12,14 +11,14 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 import view.BloodAnalysisView;
 
-
 public class BloodAnalysisModel {
+
     private Patient patient;
 
     public BloodAnalysisModel(Patient patient) {
         this.patient = patient;
     }
-    
+
     public ArrayList listBloodAnalysis() {
         ArrayList<String> list = new ArrayList();
         FHIR conn = new FHIR();
@@ -31,31 +30,20 @@ public class BloodAnalysisModel {
                 .returnBundle(Bundle.class)
                 .execute();
 
-        System.out.println(
-                "Found " + response.getEntry().size() + " Ricette");
-
         for (Bundle.BundleEntryComponent c : response.getEntry()) {
             DiagnosticReport dr = (DiagnosticReport) c.getResource();
             String date = null;
             DateTimeType dt = dr.getEffectiveDateTimeType();
-            if (dr.getEffectiveDateTimeType()!=null){
+            if (dr.getEffectiveDateTimeType() != null) {
                 date = dr.getEffectiveDateTimeType().asStringValue();
-            }
-            else{
+            } else {
                 date = "Date not found";
             }
-            
+
             list.add(date);
         }
-        
-        
-
-        
-        System.out.println("Row"+ list);
 
         return list;
-    
-    
-    
-}
+
+    }
 }

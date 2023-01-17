@@ -117,13 +117,7 @@ public class FhirClient {
                         .prettyPrint()
                         .encodedJson()
                         .execute();
-                if (outcomeMR.getCreated()) {
-                    IIdType mrID = outcomeMR.getId();
-                    System.out.println("Doctor ID: " + mrID.getValue());
-                    System.out.println(mrID.getIdPart());
-                    System.out.println(mrID.getVersionIdPart());
-
-                }
+                
                 this.mr = new MedicationRequest();
             }
         }
@@ -180,13 +174,7 @@ public class FhirClient {
                         .prettyPrint()
                         .encodedJson()
                         .execute();
-                if (outcomeVR.getCreated()) {
-                    IIdType mrID = outcomeVR.getId();
-                    System.out.println("Diagnostic Report ID: " + mrID.getValue());
-                    System.out.println(mrID.getIdPart());
-                    System.out.println(mrID.getVersionIdPart());
-
-                }
+                
     }
 
     private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE

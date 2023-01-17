@@ -14,7 +14,6 @@ public class GeneralModel extends UserModel {
     @Override
     public UserModel findUser(String cf, String password) throws Exception {
         GeneralModel gm = (GeneralModel) mdb.findUser(cf, password);
-        System.out.println("HO CERCATO"+ gm);
         return gm;
     }
 }

@@ -1,4 +1,3 @@
-
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -33,10 +32,6 @@ public class DiagnosticReportModel {
         return drLink;
     }
 
-    
-    
-    
-
     public HashMap<String, String> getExams() {
         return exams;
     }
@@ -50,9 +45,6 @@ public class DiagnosticReportModel {
                 .and(DiagnosticReport.DATE.exactly().day(dtt))
                 .returnBundle(Bundle.class)
                 .execute();
-
-        System.out.println(
-                "Found " + response.getEntry().size() + " Ricette");
 
         Bundle.BundleEntryComponent c = response.getEntry().get(0);
         DiagnosticReport dr = (DiagnosticReport) c.getResource();

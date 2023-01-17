@@ -125,11 +125,6 @@ public class FhirClient {
 
                 }
                 this.mr = new MedicationRequest();
-                /**
-                 * System.out.println(medreqsnomedID.entrySet());
-                 * System.out.println("chiave di entry: " + entry.getKey());
-                 * System.out.println("drug: " + drug);*
-                 */
             }
         }
 
@@ -139,14 +134,12 @@ public class FhirClient {
         Organization lab = new Organization();
         lab.setId(bloodcount.get("CODICE LABORATORIO"));
         lab.setName("Lab" + bloodcount.get("CODICE LABORATORIO"));
-        //Reference laboratory = new Reference(lab);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = dateFormat.parse(bloodcount.get("DATA"));
         DateTimeType dateTimeType = new DateTimeType();
         dateTimeType.setValue(date);
         dr.setEffective(dateTimeType);
         Reference patient= new Reference (p);
-        //dr.addPerformer(laboratory);
         dr.setSubject(patient);
         for (Map.Entry<String, String> entryvalueofblood : bloodcount.entrySet()) {
             if (!isInvalidKey(entryvalueofblood.getKey())) {

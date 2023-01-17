@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -19,23 +15,13 @@ import org.hl7.fhir.r4.model.Practitioner;
 import view.DoctorWelcomePage;
 import view.PatientPage;
 
-/**
- *
- * @author dilet
- */
-public class WelcomeDoctorModel {
 
-    //private DoctorWelcomePage view;
+public class WelcomeDoctorModel {
     private UserModel gp;
     private Practitioner p;
 
     public WelcomeDoctorModel(UserModel gp) {
-        //this.view = view;
         this.gp = gp;
-
-        
-
-        //inizializeView();
     }
 
     public Practitioner getP() {
@@ -79,9 +65,6 @@ public class WelcomeDoctorModel {
 
         }
         String[] array = (String[]) names.toArray(new String[0]);
-        //view.start(array);
         return array;
-
     }
-
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package model;
 
 import connectionDB.ConnectionSingleton;
@@ -11,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author immacolata
- */
 public class GeneralDB implements userDB {
 
        
@@ -55,7 +48,6 @@ public class GeneralDB implements userDB {
         } finally {
                 try { rs.close(); } catch (SQLException e) { }
                 try { pst.close(); } catch (SQLException e) { }
-              //  try { conn.close(); } catch (SQLException e) { }
             }
     }
 }

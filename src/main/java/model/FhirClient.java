@@ -98,26 +98,26 @@ public class FhirClient {
                 mr.setAuthoredOn(date);
                 mr.getSubject().setResource(p);
                 mr.getRequester().setResource(pr);
-                 Dosage dos = new Dosage();
-		Quantity doseQ = new Quantity();
+                Dosage dos = new Dosage();
+                Quantity doseQ = new Quantity();
                 System.out.println(dose);
-                String doseN = dose.substring(0,dose.length()-2);
-                String unit = dose.substring(dose.length()-2).toLowerCase();
+                String doseN = dose.substring(0, dose.length() - 2);
+                String unit = dose.substring(dose.length() - 2).toLowerCase();
                 BigDecimal bd = new BigDecimal(doseN);
-		doseQ.setValue(bd);
-		doseQ.setUnit(unit);
-		Dosage.DosageDoseAndRateComponent doserate = new Dosage.DosageDoseAndRateComponent();
-		doserate.setDose(doseQ);
-		List<Dosage.DosageDoseAndRateComponent> l = new ArrayList();
-		l.add(doserate);
-		dos.setDoseAndRate(l);
-		mr.addDosageInstruction(dos);
+                doseQ.setValue(bd);
+                doseQ.setUnit(unit);
+                Dosage.DosageDoseAndRateComponent doserate = new Dosage.DosageDoseAndRateComponent();
+                doserate.setDose(doseQ);
+                List<Dosage.DosageDoseAndRateComponent> l = new ArrayList();
+                l.add(doserate);
+                dos.setDoseAndRate(l);
+                mr.addDosageInstruction(dos);
                 MethodOutcome outcomeMR = client.create()
                         .resource(mr)
                         .prettyPrint()
                         .encodedJson()
                         .execute();
-                
+
                 this.mr = new MedicationRequest();
             }
         }
@@ -133,7 +133,7 @@ public class FhirClient {
         DateTimeType dateTimeType = new DateTimeType();
         dateTimeType.setValue(date);
         dr.setEffective(dateTimeType);
-        Reference patient= new Reference (p);
+        Reference patient = new Reference(p);
         dr.setSubject(patient);
         for (Map.Entry<String, String> entryvalueofblood : bloodcount.entrySet()) {
             if (!isInvalidKey(entryvalueofblood.getKey())) {
@@ -144,37 +144,37 @@ public class FhirClient {
 
                 Coding coding = obs.getCode().addCoding();
                 coding.setCode(snomedCode);
-                coding.setSystem("http://loinc.org");
+                coding.setSystem("https://www.snomed.org/");
                 coding.setDisplay(key);
 
                 Quantity quantityValue = new Quantity();
                 String unit = getUnitFromString(value, commonUnit);
                 String valueNoSpace = value.replaceAll("\\s+", "");
                 System.out.println(valueNoSpace);
-                int index=0;
-                for(int i=0;i<valueNoSpace.length();i++){
-                    if (!Character.isDigit(valueNoSpace.charAt(i)) && valueNoSpace.charAt(i)!='.'){
+                int index = 0;
+                for (int i = 0; i < valueNoSpace.length(); i++) {
+                    if (!Character.isDigit(valueNoSpace.charAt(i)) && valueNoSpace.charAt(i) != '.') {
                         index = i;
                         break;
-                        
+
                     }
-                    
+
                 }
                 quantityValue.setValue(new BigDecimal(valueNoSpace.substring(0, index)));
                 quantityValue.setSystem("http://unitsofmeasure.org");
-                
+
                 quantityValue.setUnit(unit);
                 obs.setValue(quantityValue);
                 Reference observation = new Reference(obs);
                 dr.addResult(observation);
             }
         }
-                MethodOutcome outcomeVR = client.create()
-                        .resource(dr)
-                        .prettyPrint()
-                        .encodedJson()
-                        .execute();
-                
+        MethodOutcome outcomeVR = client.create()
+                .resource(dr)
+                .prettyPrint()
+                .encodedJson()
+                .execute();
+
     }
 
     private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE

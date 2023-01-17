@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -10,10 +7,6 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 
-/**
- *
- * @author immacolata
- */
 public class PatientModel extends UserModel {
 
     String namePatient = "";
@@ -37,7 +30,6 @@ public class PatientModel extends UserModel {
         FHIR conn = new FHIR();
         IGenericClient client = conn.FHIRConnection();
         Practitioner f = new Practitioner();
-        // cerco il paziente con questo codice fiscale 
         Bundle response;
         response = client.search()
                 .forResource(Patient.class)
@@ -54,8 +46,7 @@ public class PatientModel extends UserModel {
       return patient;       
 
     }
-    // prendo il cf del paziente che ha fatto accesso e trovo il suo nome e cognome in FHIR
-
+    // fIND NAME AND SURNAME OF PATIENT THAT LOGGED IN
     public String FindNomePatient(Patient p) {
         namePatient = patient.getName().get(0).getNameAsSingleString();
     return namePatient ;

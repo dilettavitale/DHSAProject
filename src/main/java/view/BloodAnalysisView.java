@@ -139,7 +139,6 @@ public class BloodAnalysisView extends javax.swing.JFrame {
 
             rowData[0] = list.get(i);
 
-            System.out.println(rowData);
             model.addRow(rowData);
         }
 

@@ -239,7 +239,6 @@ public class PatientView extends javax.swing.JFrame {
 
     public void addCallListener(ActionListener listener) {
         callbutt.addActionListener(listener);
-        //System.out.println("ciao");
 
     }
 
@@ -257,14 +256,11 @@ public class PatientView extends javax.swing.JFrame {
 
     public void addLoadBloodAnalysisListener(ActionListener listener) {
         bloodAnalysis.addActionListener(listener);
-        //System.out.println("ciao");
 
     }
 
     public void addMedicationRequestListener(ActionListener listener) {
         viewMedical.addActionListener(listener);
-        //System.out.println("ciao");
-
     }
 
 }

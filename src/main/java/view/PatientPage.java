@@ -226,7 +226,6 @@ public class PatientPage extends javax.swing.JFrame {
 
     public void addBloodAnalysisListener(ActionListener listener) {
         jButton3.addActionListener(listener);
-        //System.out.println("ciao");
 
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -327,7 +326,6 @@ public class PatientPage extends javax.swing.JFrame {
 
     public void addLoadMedicationRequestListener(ActionListener listener) {
         loadMedRequest.addActionListener(listener);
-        //System.out.println("ciao");
 
     }
 

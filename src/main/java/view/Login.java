@@ -337,7 +337,7 @@ public class Login extends javax.swing.JFrame {
    
     public void addLoginListener(ActionListener listener) {
         logbutt.addActionListener(listener);
-        //System.out.println("ciao");
+        
        
     }
 

@@ -178,17 +178,13 @@ public class DoctorWelcomePage extends javax.swing.JFrame {
         //PatientPage pp = new PatientPage();
         //pp.initPage(splits[2]);
         /**
-        * final String link1 = "skype:live:foscavitale_1?call"; final String
-        * link2 ="https://hapi.fhir.org/baseR4/Patient/1987901/_history/1";*
-        */
+         * final String link1 = "skype:live:foscavitale_1?call"; final String
+         * link2 ="https://hapi.fhir.org/baseR4/Patient/1987901/_history/1";*
+         */
     }//GEN-LAST:event_addJListListener
-public void addJListListener(MouseListener listener) {
-        System.out.println("Ciao");
-        
-        
+    public void addJListListener(MouseListener listener) {
+
         jList1.addMouseListener(listener);
-        //List1.addListSelectionListener(listener);
-        //System.out.println("ciao");
 
     }
     /**
@@ -206,13 +202,14 @@ public void addJListListener(MouseListener listener) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    public String getListSelected(){
+    public String getListSelected() {
         return jList1.getSelectedValue();
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         jLabel2.setText(name);
     }
+
     public void setJList(AbstractListModel<String> abl) {
         jList1.setModel(abl);
 

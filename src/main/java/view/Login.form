@@ -186,11 +186,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/immacolata/NetBeansProjects/digitalhealth_projectF/src/main/java/image/3437359.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -298,18 +293,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/immacolata/NetBeansProjects/digitalhealth_projectF/src/main/java/image/icons8_Account_50px.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/immacolata/NetBeansProjects/digitalhealth_projectF/src/main/java/image/icons8_Secure_50px.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

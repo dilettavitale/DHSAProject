@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package model;
 
 import ca.uhn.fhir.rest.client.api.IGenericClient;
@@ -19,20 +16,14 @@ import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Reference;
 import view.MedicationRequestView;
 
-/**
- *
- * @author immacolata
- */
 public class MedicationRequestModel {
 
     private Patient patient;
-    //private MedicationRequestView medReqView;
     private List<MedicationRequest> med = new ArrayList();
 
 
     public MedicationRequestModel(Patient patient) {
         this.patient = patient;
-        //this.medReqView = medReqView;
     }
 
     public class RowTable {
@@ -105,8 +96,6 @@ public class MedicationRequestModel {
                 .returnBundle(Bundle.class)
                 .execute();
 
-        //System.out.println("Found " + response.getEntry().size() + " Ricette");
-
         for (BundleEntryComponent c : response.getEntry()) {
             MedicationRequest m = (MedicationRequest) c.getResource();
             String ref = m.getRequester().getReference();
@@ -120,13 +109,10 @@ public class MedicationRequestModel {
 
             RowTable r = new RowTable(m.getMedicationCodeableConcept().getCoding().get(0).getDisplay().toString(), m.getAuthoredOn().toString(), m.getStatus().toString(), m.getIdBase(), nameGP);
 
-            //System.out.println(r.getName());
-            //System.out.println(r.getName());
             list.add(r);
 
         }
 
-        //System.out.println("Row" + list);
 
         return list;
     }

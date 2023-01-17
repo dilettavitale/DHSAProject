@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.BloodAnalysisModel;
 import org.hl7.fhir.r4.model.Patient;
 import view.BloodAnalysisView;
@@ -43,6 +44,7 @@ public class BloodAnalysisController {
         public void mouseClicked(MouseEvent e) {
             String value = bav.getSelectedText();
             try {
+                JOptionPane.showMessageDialog(null, "Contenuto riga selezionata: " + value);
                 DiagnosticReportController drc = new DiagnosticReportController(patient, value);
                 bav.setVisible(false);
 

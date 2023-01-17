@@ -30,8 +30,6 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
     }
 
     private void extractInformationBloodExams(String text, Patient p) throws ParseException {
-        // Compile the regular expression
-
         Pattern pattern = Pattern.compile("Codice Lab:\\s*(\\d+)\\s+(\\d+)\\s+(\\d+)");
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {

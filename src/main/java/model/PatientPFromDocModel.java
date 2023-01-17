@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import ca.uhn.fhir.context.FhirContext;
@@ -28,21 +24,14 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.StringType;
 import view.PatientPage;
 
-/**
- *
- * @author dilet
- */
 public class PatientPFromDocModel {
 
     private String cf;
     private String skypeid;
-    //private PatientPage page;
     private Patient patient;
 
     public PatientPFromDocModel(String cf) {
-        //To change body of generated methods, choose Tools | Templates.
         this.cf = cf;
-        //this.page =page;
         FindSkypeDB fsdb = new FindSkypeDB();
         this.skypeid = fsdb.SkypeName(cf);
 
@@ -81,11 +70,4 @@ public class PatientPFromDocModel {
     public Patient getPatient() {
         return patient;
     }
-    
-    
-    
-    
-
-    
-
 }

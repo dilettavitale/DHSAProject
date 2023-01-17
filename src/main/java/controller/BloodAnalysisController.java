@@ -44,6 +44,7 @@ public class BloodAnalysisController {
             String value = bav.getSelectedText();
             try {
                 DiagnosticReportController drc = new DiagnosticReportController(patient, value);
+                bav.setVisible(false);
 
             } catch (ParseException ex) {
                 Logger.getLogger(BloodAnalysisController.class.getName()).log(Level.SEVERE, null, ex);

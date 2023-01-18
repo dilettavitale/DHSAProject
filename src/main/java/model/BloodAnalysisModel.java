@@ -14,11 +14,19 @@ import view.BloodAnalysisView;
 public class BloodAnalysisModel {
 
     private Patient patient;
-
+    
+    /**
+     * This model manipulates data to show in BloodAnalysisView
+     * @param patient selected patient
+     */
     public BloodAnalysisModel(Patient patient) {
         this.patient = patient;
     }
 
+    /**
+     * This function searchs the dates of the diagnostic reports of the selected patient
+     * @return the list of the dates
+     */
     public ArrayList listBloodAnalysis() {
         ArrayList<String> list = new ArrayList();
         

@@ -14,13 +14,18 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Reference;
 import view.DiagnosticReportView;
 
+
 public class DiagnosticReportModel {
 
     private Patient patient;
     private String dtt;
     private HashMap<String, String> exams = new HashMap<>();
     private String drLink;
-
+    /**
+     * This model manipulates the data to show in the DiagnosticReportView
+     * @param patient the selected patient
+     * @param dtt the selected date
+     */
     public DiagnosticReportModel(Patient patient, String dtt) {
         this.patient = patient;
         this.dtt = dtt;
@@ -35,7 +40,11 @@ public class DiagnosticReportModel {
     public HashMap<String, String> getExams() {
         return exams;
     }
-
+    
+    /**
+     * This method searchs the DiagnosticReport made in the selected date and creates a hashmap saving this values
+     * @return the JSON link to the DiagnosticReport
+     */
     public String search() {
         Bundle response = FHIR.client.search()
                 .forResource(DiagnosticReport.class)

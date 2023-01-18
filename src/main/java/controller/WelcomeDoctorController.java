@@ -67,7 +67,10 @@ public class WelcomeDoctorController {
     public class JListPatients extends AbstractListModel {
 
         String[] strings;
-
+        /**
+         * This class is used to updates values in the view's JList
+         * @param strings 
+         */
         public JListPatients(String[] strings) {
             this.strings = strings;
         }

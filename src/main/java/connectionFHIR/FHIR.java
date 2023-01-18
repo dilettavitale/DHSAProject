@@ -12,9 +12,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
- *
- * @author immacolata
+ * This class is used only to create the FHIR client once
+ * @author dilet and immacolata
  */
 public class FHIR {
 

@@ -1,10 +1,10 @@
 
 package model;
 
+import connectionFHIR.FHIR;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionDB.ConnectionSingleton;
-import connectionFHIR.FHIR;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,9 +42,7 @@ public class PatientPFromDocModel {
     }
 
     public ArrayList<String> inizializeView() {
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
-        Bundle responsePatient = client.search()
+        Bundle responsePatient = FHIR.client.search()
                 .forResource(Patient.class)
                 .where(Patient.IDENTIFIER.exactly().identifier(cf))
                 .returnBundle(Bundle.class)

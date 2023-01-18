@@ -1,7 +1,7 @@
 package model;
 
-import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionFHIR.FHIR;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import java.util.ArrayList;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.DateTimeType;
@@ -21,10 +21,9 @@ public class BloodAnalysisModel {
 
     public ArrayList listBloodAnalysis() {
         ArrayList<String> list = new ArrayList();
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
+        
         Practitioner f = new Practitioner();
-        Bundle response = client.search()
+        Bundle response = FHIR.client.search()
                 .forResource(DiagnosticReport.class)
                 .where(DiagnosticReport.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(patient.getIdentifierFirstRep().getValue())))
                 .returnBundle(Bundle.class)

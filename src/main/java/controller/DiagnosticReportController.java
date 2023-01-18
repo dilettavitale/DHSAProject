@@ -36,11 +36,16 @@ class DiagnosticReportController {
     private DiagnosticReportView view = new DiagnosticReportView();
     private HashMap<String, String> exams;
     private String drLink;
-
+    
+    /**
+     * The controller for the manipulation of data for the view of the analysis values
+     * @param patient: the patient of whom analysis belongs
+     * @param value: the date of the analysis in string format
+     * @throws ParseException 
+     */
     public DiagnosticReportController(Patient patient, String value) throws ParseException {
         this.patient = patient;
         this.dateS = value;
-        this.dtt = createDateTimeType(value);
         this.drm = new DiagnosticReportModel(patient, value);
         this.exams = this.drm.getExams();
         setValues();
@@ -55,6 +60,9 @@ class DiagnosticReportController {
     public class JSONListener implements ActionListener {
 
         @Override
+        /** The method shows the JSON format of the diagnostic report when the user clicks on the button
+         * @param e: the click on the button
+         */
         public void actionPerformed(ActionEvent e) {
 
             String link1 = drLink;
@@ -76,16 +84,10 @@ class DiagnosticReportController {
 
         }
     }
-
-    private DateTimeType createDateTimeType(String value) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = dateFormat.parse(this.dateS);
-        DateTimeType dateTimeType = new DateTimeType();
-        dateTimeType.setValue(date);
-        return dateTimeType;
-
-    }
-
+    
+    /**
+     * This method sets the measured values on the right place in the view
+     */
     private void setValues() {
         this.view.setRBC(this.exams.get("RBC"));
         this.view.setWBC(this.exams.get("WBC"));

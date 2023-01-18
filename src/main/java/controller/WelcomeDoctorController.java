@@ -38,7 +38,12 @@ public class WelcomeDoctorController {
     private IGenericClient client;
     private WelcomeDoctorModel wdm;
     private Practitioner practitioner;
-
+    
+    /**
+     * The controller for the manipulation of data to show the list of patient of the practioner who logged into the account
+     * @param view the page seen by the practitioner as soon as they log in
+     * @param gp the GBModel of the practitioner who logged in
+     */
     public WelcomeDoctorController(DoctorWelcomePage view, UserModel gp) {
         this.view = view;
         this.doctor = gp;
@@ -81,6 +86,10 @@ public class WelcomeDoctorController {
     public class JMouseListListener implements MouseListener {
 
         @Override
+        /**
+         * The method shows the data of the selected patient
+         * @param e : event in which the user clicked on the name of the selected patient
+         */
         public void mouseClicked(MouseEvent e) {
             String value = view.getListSelected();
             String splits[] = value.split("\\s+");

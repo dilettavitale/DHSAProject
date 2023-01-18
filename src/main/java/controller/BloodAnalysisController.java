@@ -27,7 +27,10 @@ public class BloodAnalysisController {
     private Patient patient;
     private BloodAnalysisModel bam;
     private BloodAnalysisView bav = new BloodAnalysisView();
-
+    /**
+     * The controller for the manipulation of data for the view of the dates of the several analysis made by the chosen patient
+     * @param patient: the patient of whom analysis dates will be shown
+     */
     public BloodAnalysisController(Patient patient) {
         this.patient = patient;
         this.bam = new BloodAnalysisModel(patient);
@@ -39,8 +42,12 @@ public class BloodAnalysisController {
     }
 
     public class JMouseTableListener implements MouseListener {
-
+        
         @Override
+        /**
+         * The method shows the data of the diagnostic report made on the selected day
+         * @param e : event in which the user clicked on a row of the table and has chosen one analysis to be shown
+         */
         public void mouseClicked(MouseEvent e) {
             String value = bav.getSelectedText();
             try {

@@ -1,8 +1,8 @@
 
 package model;
 
-import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionFHIR.FHIR;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import controller.PatientPFromDocController;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,9 +30,7 @@ public class WelcomeDoctorModel {
     
     
     public String inizilizeName(){
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
-        Bundle response = client.search()
+        Bundle response = FHIR.client.search()
                 .forResource(Practitioner.class)
                 .where(Practitioner.IDENTIFIER.exactly().identifier(gp.getCf()))
                 .returnBundle(Bundle.class)
@@ -45,9 +43,7 @@ public class WelcomeDoctorModel {
 
 
     public String[] inizializeJList() {
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
-        Bundle response = client.search()
+        Bundle response = FHIR.client.search()
                 .forResource(Patient.class)
                 .where(Patient.GENERAL_PRACTITIONER.hasChainedProperty(Organization.IDENTIFIER.exactly().identifier(gp.getCf())))
                 .returnBundle(Bundle.class)

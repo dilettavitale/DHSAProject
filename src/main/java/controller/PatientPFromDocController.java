@@ -35,7 +35,11 @@ public class PatientPFromDocController {
     private String skypeid;
     private Patient patient;
     private Practitioner pr;
-
+    /**
+     * The controller for the manipulation of data on the patient page requested by the practitioner
+     * @param cf the patient's fiscal code
+     * @param pr the practitioner who is logged into the account
+     */
     public PatientPFromDocController(String cf, Practitioner pr) {
         this.cf = cf;
         this.pr = pr;
@@ -58,6 +62,10 @@ public class PatientPFromDocController {
     public class CallListener implements ActionListener {
 
         @Override
+        /**
+         * The method makes the doctor call the patient
+         * @param e : event in which the user clicked on the button to start the call
+         */
         public void actionPerformed(ActionEvent e) {
 
             String link1 = "skype:" + skypeid + "?call";

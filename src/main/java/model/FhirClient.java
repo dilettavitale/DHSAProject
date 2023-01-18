@@ -1,11 +1,11 @@
 package model;
 
+import connectionFHIR.FHIR;
 import ca.uhn.fhir.context.FhirContext;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.r4.model.Patient;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import connectionFHIR.FHIR;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,8 +30,6 @@ import org.hl7.fhir.r4.model.Reference;
 public class FhirClient {
 
     private final HashMap<String, String> medreqinenglish = new HashMap<>();
-    FHIR conn = new FHIR();
-    IGenericClient client = conn.FHIRConnection();
     Patient patient = new Patient();
     MedicationRequest mr = new MedicationRequest();
     DiagnosticReport dr = new DiagnosticReport();
@@ -112,7 +110,7 @@ public class FhirClient {
                 l.add(doserate);
                 dos.setDoseAndRate(l);
                 mr.addDosageInstruction(dos);
-                MethodOutcome outcomeMR = client.create()
+                MethodOutcome outcomeMR = FHIR.client.create()
                         .resource(mr)
                         .prettyPrint()
                         .encodedJson()
@@ -169,7 +167,7 @@ public class FhirClient {
                 dr.addResult(observation);
             }
         }
-        MethodOutcome outcomeVR = client.create()
+        MethodOutcome outcomeVR = FHIR.client.create()
                 .resource(dr)
                 .prettyPrint()
                 .encodedJson()

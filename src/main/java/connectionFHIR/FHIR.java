@@ -18,17 +18,17 @@ import java.util.logging.Logger;
  */
 public class FHIR {
 
-    FhirContext ctx = FhirContext.forR4();
-    String serverBase = "https://hapi.fhir.org/baseR4";
-    private IGenericClient client = ctx.newRestfulGenericClient(serverBase);
+    public static FhirContext  ctx = FhirContext.forR4();
+    public static String serverBase = "https://hapi.fhir.org/baseR4";
+    public static IGenericClient client = ctx.newRestfulGenericClient(serverBase);
      
 
     // private constructor
-    public FHIR() {
-    }
+    /**public FHIR() {
+    }**/
     
-    public IGenericClient FHIRConnection(){
+    /**public IGenericClient FHIRConnection(){
         IGenericClient client = ctx.newRestfulGenericClient(serverBase);
         return client;    
-    }
+    }**/
 }

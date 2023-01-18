@@ -1,7 +1,7 @@
 package model;
 
-import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionFHIR.FHIR;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
@@ -20,12 +20,10 @@ public class CallPatientModel {
     }
 
     public String findSkypeGeneral(String cfPatient) {
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
         Practitioner f = new Practitioner();
         // cerco il paziente con questo codice fiscale 
         Bundle response;
-        response = client.search()
+        response = FHIR.client.search()
                 .forResource(Patient.class)
                 .where(Patient.IDENTIFIER.exactly().identifier(cfPatient))
                 .returnBundle(Bundle.class)

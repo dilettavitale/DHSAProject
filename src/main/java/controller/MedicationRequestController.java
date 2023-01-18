@@ -26,7 +26,7 @@ public class MedicationRequestController {
     private MedicationRequestModel medReqM;
     private PatientModel model;
     private MedicationRequestView medReqView = new MedicationRequestView();
-
+    
     public MedicationRequestController(Patient patient, PatientModel model) {
         this.patient = patient;
         this.model = model;

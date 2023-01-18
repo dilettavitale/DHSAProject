@@ -1,7 +1,7 @@
 package model;
 
-import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionFHIR.FHIR;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -37,9 +37,7 @@ public class DiagnosticReportModel {
     }
 
     public String search() {
-        FHIR f = new FHIR();
-        IGenericClient client = f.FHIRConnection();
-        Bundle response = client.search()
+        Bundle response = FHIR.client.search()
                 .forResource(DiagnosticReport.class)
                 .where(DiagnosticReport.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(patient.getIdentifierFirstRep().getValue())))
                 .and(DiagnosticReport.DATE.exactly().day(dtt))

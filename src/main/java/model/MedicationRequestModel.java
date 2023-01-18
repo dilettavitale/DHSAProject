@@ -1,8 +1,7 @@
-
 package model;
 
-import ca.uhn.fhir.rest.client.api.IGenericClient;
 import connectionFHIR.FHIR;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,6 @@ public class MedicationRequestModel {
 
     private Patient patient;
     private List<MedicationRequest> med = new ArrayList();
-
 
     public MedicationRequestModel(Patient patient) {
         this.patient = patient;
@@ -86,11 +84,10 @@ public class MedicationRequestModel {
     public ArrayList listMedRequest(PatientModel model) {
         String nameGP = "";
         ArrayList<RowTable> list = new ArrayList();
-        FHIR conn = new FHIR();
-        IGenericClient client = conn.FHIRConnection();
+
         Practitioner f = new Practitioner();
 
-        Bundle response = client.search()
+        Bundle response = FHIR.client.search()
                 .forResource(MedicationRequest.class)
                 .where(MedicationRequest.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(model.getCf())))
                 .returnBundle(Bundle.class)
@@ -101,7 +98,7 @@ public class MedicationRequestModel {
             String ref = m.getRequester().getReference();
             System.out.println(ref);
             String doctorID = ref.substring(13);
-            Practitioner foundDoctor = client.read()
+            Practitioner foundDoctor = FHIR.client.read()
                     .resource(Practitioner.class)
                     .withId(doctorID)
                     .execute();
@@ -112,7 +109,6 @@ public class MedicationRequestModel {
             list.add(r);
 
         }
-
 
         return list;
     }

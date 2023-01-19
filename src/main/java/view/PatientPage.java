@@ -220,12 +220,20 @@ public class PatientPage extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+    /**
+     * This method adds a listener to the JButton that can make start the call
+     * @param listener it is calculated in the controller and it makes start the call
+     */
     public void addCallListener(ActionListener listener) {
         jButton1.addActionListener(listener);
-        //System.out.println("ciao");
+        
 
     }
-
+    
+    /**
+     * This method adds a listener to the JButton that opens the BloodAnalysisView
+     * @param listener it is calculated in the controller and it opens the BloodAnalysisView
+     */
     public void addBloodAnalysisListener(ActionListener listener) {
         jButton3.addActionListener(listener);
 
@@ -325,7 +333,11 @@ public class PatientPage extends javax.swing.JFrame {
     public void setHouseNumber(String name) {
         jTextField4.setText(name);
     }
-
+    
+    /**
+     * This method adds a listener to the JButton that can make load a medication request
+     * @param listener it is calculated in the controller and it makes the doctor load the medication request
+     */
     public void addLoadMedicationRequestListener(ActionListener listener) {
         loadMedRequest.addActionListener(listener);
 

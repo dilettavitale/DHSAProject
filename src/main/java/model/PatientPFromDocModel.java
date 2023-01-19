@@ -29,7 +29,11 @@ public class PatientPFromDocModel {
     private String cf;
     private String skypeid;
     private Patient patient;
-
+    
+    /**
+     * This class manipulates the data to show in the PatienPage
+     * @param cf the fiscal code of the selected patient
+     */
     public PatientPFromDocModel(String cf) {
         this.cf = cf;
         FindSkypeDB fsdb = new FindSkypeDB();
@@ -41,6 +45,10 @@ public class PatientPFromDocModel {
         return skypeid;
     }
 
+    /**
+     * This method searchs for the basic data of a patient
+     * @return the list of all patient's data
+     */
     public ArrayList<String> inizializeView() {
         Bundle responsePatient = FHIR.client.search()
                 .forResource(Patient.class)

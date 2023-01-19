@@ -19,7 +19,10 @@ import view.PatientPage;
 public class WelcomeDoctorModel {
     private UserModel gp;
     private Practitioner p;
-
+    /**
+     * This class manipulates the data to show in the WelcomeDoctorView
+     * @param gp 
+     */
     public WelcomeDoctorModel(UserModel gp) {
         this.gp = gp;
     }
@@ -28,7 +31,10 @@ public class WelcomeDoctorModel {
         return p;
     }
     
-    
+    /**
+     * This method searchs for the name of the doctor who logged in 
+     * @return the name of the doctor
+     */
     public String inizilizeName(){
         Bundle response = FHIR.client.search()
                 .forResource(Practitioner.class)
@@ -41,7 +47,10 @@ public class WelcomeDoctorModel {
         
     }
 
-
+    /**
+     * This method searchs for the names and the fiscal codes of the doctor's patients
+     * @return the list with names and fiscal codes
+     */
     public String[] inizializeJList() {
         Bundle response = FHIR.client.search()
                 .forResource(Patient.class)

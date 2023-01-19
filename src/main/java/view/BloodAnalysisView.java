@@ -143,7 +143,10 @@ public class BloodAnalysisView extends javax.swing.JFrame {
         }
 
     }
-    
+    /**
+     * This method adds a listener to the JTable that shows the dates of the analysis
+     * @param listener it is calculated in the controller and it opens the page of the selected diagnostic report
+     */
     public void addTableListener(MouseListener listener){
         jTable2.addMouseListener(listener);
     }

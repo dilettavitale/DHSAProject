@@ -400,7 +400,10 @@ public class DiagnosticReportView extends javax.swing.JFrame {
             }
         });
     }
-    
+    /**
+     * This method adds a listener to the JButton that can show the JSON of the diagnostic report
+     * @param listener it is calculated in the controller and it opens the JSON of the selected diagnostic report
+     */
     public void addJSONListener(ActionListener listener){
         jButton1.addActionListener(listener);
         

@@ -81,7 +81,7 @@ public class MedicationRequestModel {
         }
     }
 
-    public ArrayList listMedRequest(PatientModel model) {
+    public ArrayList listMedRequest() {
         String nameGP = "";
         ArrayList<RowTable> list = new ArrayList();
 
@@ -89,7 +89,7 @@ public class MedicationRequestModel {
 
         Bundle response = FHIR.client.search()
                 .forResource(MedicationRequest.class)
-                .where(MedicationRequest.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(model.getCf())))
+                .where(MedicationRequest.SUBJECT.hasChainedProperty(Patient.IDENTIFIER.exactly().identifier(patient.getIdentifierFirstRep().getValue())))
                 .returnBundle(Bundle.class)
                 .execute();
 

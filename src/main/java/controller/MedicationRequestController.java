@@ -24,14 +24,18 @@ public class MedicationRequestController {
 
     private Patient patient;
     private MedicationRequestModel medReqM;
-    private PatientModel model;
     private MedicationRequestView medReqView = new MedicationRequestView();
-    
-    public MedicationRequestController(Patient patient, PatientModel model) {
+
+    /**
+     * The controller for the manipulation of data for the view of medication
+     * requests made by the general practitioner
+     *
+     * @param patient: the patient who wants to see the medication requests
+     */
+    public MedicationRequestController(Patient patient) {
         this.patient = patient;
-        this.model = model;
         this.medReqM = new MedicationRequestModel(patient);
-        ArrayList<MedicationRequestModel.RowTable> list = this.medReqM.listMedRequest(model);
+        ArrayList<MedicationRequestModel.RowTable> list = this.medReqM.listMedRequest();
         this.medReqView.setTable(list);
         this.medReqView.setVisible(true);
         this.medReqView.addSelectionMouseListener(new MedicationRequestListener());
@@ -43,6 +47,13 @@ public class MedicationRequestController {
         public MedicationRequestListener() {
 
         }
+
+        /**
+         * The method shows the data of the selected prescription
+         *
+         * @param e : event in which the user clicked on a row of the table and
+         * has chosen one medication request to be shown
+         */
 
         public void mouseClicked(MouseEvent me) {
             String col1 = "";
@@ -58,7 +69,7 @@ public class MedicationRequestController {
             if ((col1.length() != 0) && (col2.length() != 0)) {
                 JOptionPane.showMessageDialog(null, "Contenuto riga selezionata: " + col1 + " " + col2);
                 OneMedicationRequestView oneMedicationView = new OneMedicationRequestView();
-                OneMedicationRequestController oneMedication = new OneMedicationRequestController(oneMedicationView, col1, col2, col3, col4, col5, model);
+                OneMedicationRequestController oneMedication = new OneMedicationRequestController(oneMedicationView, col1, col2, col3, col4, col5);
                 oneMedicationView.setVisible(true);
                 medReqView.setVisible(false);
             }

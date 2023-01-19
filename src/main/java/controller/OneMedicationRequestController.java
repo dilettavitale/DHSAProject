@@ -27,16 +27,25 @@ public class OneMedicationRequestController {
     private final String status;
     private final String link;
     private final String practitioner;
-    private final PatientModel p;
 
-    public OneMedicationRequestController(OneMedicationRequestView oneMedicationView, String nameMedRequest, String date, String status, String link, String practitioner, PatientModel p) {
+    /**
+     * The controller for the manipulation of data for the view of the one
+     * medication request
+     *
+     * @param oneMedicationView:the page that shows a medication request
+     * @param nameMedRequest:prescription name
+     * @param date:date of issue of the medical prescription
+     * @param status:prescription status
+     * @param link: link FHIR
+     * @param practitioner: the name of the general practitioner
+     */
+    public OneMedicationRequestController(OneMedicationRequestView oneMedicationView, String nameMedRequest, String date, String status, String link, String practitioner) {
         this.oneMedicationView = oneMedicationView;
         this.nameMedRequest = nameMedRequest;
         this.date = date;
         this.status = status;
         this.link = link;
         this.practitioner = practitioner;
-        this.p = p;
         this.oneMedicationView.setLabelname(nameMedRequest);
         this.oneMedicationView.setLabelDate(date);
         this.oneMedicationView.setLabelStatus(status);
@@ -44,6 +53,12 @@ public class OneMedicationRequestController {
         this.oneMedicationView.addJSONListener(new OneMedicationRequestController.JSONListener());
     }
 
+    /**
+     * The method shows the JSON format of the medication request when the user
+     * clicks on the button
+     *
+     * @param e: the click on the button
+     */
     public class JSONListener implements ActionListener {
 
         @Override

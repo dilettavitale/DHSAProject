@@ -159,20 +159,11 @@ public class MedicationRequestView extends javax.swing.JFrame {
             System.out.println(rowData);
             model.addRow(rowData);
         }
-        /*
-        jTable.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                String col1 = (String) jTable.getValueAt(jTable.getSelectedRow(), 0);
-                String col2 = (String) jTable.getValueAt(jTable.getSelectedRow(), 1);
-                if ((col1.length() != 0) && (col2.length() != 0)) {
-                    JOptionPane.showMessageDialog(null, "Contenuto riga selezionata: " + col1 + " " + col2);
-                }
-
-            }
-        });*/
-
     }
-
+    /**
+     * This method adds a listener to the JTable that shows the medication requests
+     * @param listener it is calculated in the controller and it opens the page of the selected medication request
+     */
     public void addSelectionMouseListener(MouseAdapter adapter) {
         jTable.addMouseListener(adapter);
         //System.out.println("ciao");

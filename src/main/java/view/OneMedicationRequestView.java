@@ -187,6 +187,13 @@ public class OneMedicationRequestView extends javax.swing.JFrame {
         jStatus.setText(s);
     }
 
+    /**
+     * This method adds a listener to the JButton that can show the JSON of the
+     * medication request
+     *
+     * @param listener it is calculated in the controller and it opens the JSON
+     * of the selected medication request
+     */
     public void addJSONListener(ActionListener listener) {
         jButton.addActionListener(listener);
 

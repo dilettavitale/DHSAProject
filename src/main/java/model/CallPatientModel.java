@@ -6,6 +6,10 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Practitioner;
 
+/**
+ *
+ * @author immacolata
+ */
 public class CallPatientModel {
 
     private FindSkypeDB skypeDB;
@@ -19,9 +23,14 @@ public class CallPatientModel {
 
     }
 
+    /**
+     * this method searchs the Skype name of the user
+     *
+     * @param cfPatient: fiscal code of the patient
+     * @return Skype name of the user
+     */
     public String findSkypeGeneral(String cfPatient) {
         Practitioner f = new Practitioner();
-        // cerco il paziente con questo codice fiscale 
         Bundle response;
         response = FHIR.client.search()
                 .forResource(Patient.class)
@@ -43,6 +52,12 @@ public class CallPatientModel {
 
     }
 
+    /**
+     * this method builds the Skype link
+     *
+     * @param namSkype: Skype name of the user
+     * @return Skype link of the user
+     */
     public String constructSkypeLink(String namSkype) {
         linkSkype = link + nameSkype + "?call";
 

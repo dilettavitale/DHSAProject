@@ -18,8 +18,6 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    
-
     /**
      * Creates new form login
      */
@@ -342,11 +340,15 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtpass;
     private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
-   
+
+    /**
+     * This method adds a listener to the login button
+     *
+     * @param listener it is calculated in the controller and it opens the
+     * PatientView or DoctorWelcomePage
+     */
     public void addLoginListener(ActionListener listener) {
         logbutt.addActionListener(listener);
-        
-       
     }
 
     public String getRole() {
@@ -365,7 +367,4 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, errorMessage);
     }
 
-
-
 }
-

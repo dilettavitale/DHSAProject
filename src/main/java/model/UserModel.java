@@ -1,13 +1,22 @@
-
 package model;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author immacolata
+ */
 public abstract class UserModel implements Serializable {
-    
+
     private String cf;
     private String password;
 
+    /**
+     * this class defines the user of the application
+     *
+     * @param cf: fiscal code of the user
+     * @param password: password of the user
+     */
     public UserModel(String cf, String password) {
         this.cf = cf;
         this.password = password;
@@ -22,7 +31,7 @@ public abstract class UserModel implements Serializable {
     }
 
     public void setCf(String cf) {
-        this.cf =cf ;
+        this.cf = cf;
     }
 
     public void setPassword(String password) {
@@ -33,7 +42,7 @@ public abstract class UserModel implements Serializable {
 
     @Override
     public String toString() {
-        return "cf=" + cf + ", password=" + password ;
+        return "cf=" + cf + ", password=" + password;
     }
-    
+
 }

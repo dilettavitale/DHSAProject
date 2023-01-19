@@ -22,7 +22,7 @@ public class FindSkypeDB{
     
     /**
      * This method returns the skypename of the user who has this cf
-     * @param cf
+     * @param cf: fiscal code of the user
      * @return NomeSkype
      */
     public String SkypeName(String cf){

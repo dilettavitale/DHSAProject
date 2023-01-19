@@ -23,6 +23,12 @@ public class LogController {
 
     private final Login view;
 
+    /**
+     * The controller for the manipulation of data of the user that request the
+     * access
+     *
+     * @param view the page that allows the login
+     */
     public LogController(Login view) {
         this.view = view;
         this.view.addLoginListener(new LoginListener());
@@ -30,8 +36,14 @@ public class LogController {
     }
 
     public class LoginListener implements ActionListener {
-        
+
         @Override
+        /**
+         * the method allows the user to enter his area
+         *
+         * @param e : event in which the user clicked on the button to login
+         * call
+         */
         public void actionPerformed(ActionEvent e) {
             String cf = "";
             String password = "";
@@ -64,7 +76,7 @@ public class LogController {
                     case "Patient": {
 
                         UserFactory patientFactory = new PatientFactory();
-                        UserModel patient = patientFactory.build(UserFactory.Role.PATIENT, cf, password);
+                        UserModel patient = patientFactory.build(UserFactory.Role.PATIENT, cf, password); //builds PatientModel
 
                         patient = patient.findUser(patient.getCf(), patient.getPassword());
                         if (patient == null) {

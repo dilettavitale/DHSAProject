@@ -37,10 +37,16 @@ public class PatientController {
     private final PatientModel model;
     private Patient pt;
 
+    /**
+     * The controller for the manipulation of data of the patient who logged
+     * into the account
+     *
+     * @param view the page seen by the patient after log in
+     * @param model the PatientModel of the patient who logged in
+     */
     public PatientController(PatientView view, PatientModel model) {
         this.view = view;
         this.model = model;
-
         this.view.addCallListener(new CallListener());
         this.view.addLoadBloodAnalysisListener(new BloodAnalysisListener());
         this.view.setLabelcf(model.getCf());
@@ -54,6 +60,12 @@ public class PatientController {
     public class CallListener implements ActionListener {
 
         @Override
+        /**
+         * The method makes the patient call the general practitioner
+         *
+         * @param e : event in which the user clicked on the button to start the
+         * call
+         */
         public void actionPerformed(ActionEvent e) {
             String linkGP = "";
 
@@ -90,6 +102,12 @@ public class PatientController {
     public class BloodAnalysisListener implements ActionListener {
 
         @Override
+        /**
+         * The method makes the patient loads the blood analysis
+         *
+         * @param e : event in which the user clicked on the button to load the
+         * blood analysis
+         */
         public void actionPerformed(ActionEvent e) {
 
             try {
@@ -108,6 +126,13 @@ public class PatientController {
         }
     }
 
+    /**
+     * The method makes the patient sees the medication requests
+     *
+     * @param e : event in which the user clicked on the button to see the
+     * medication requests
+     */
+
     public class MedicationRequestListener implements ActionListener {
 
         private Patient patient;
@@ -120,7 +145,7 @@ public class PatientController {
         public void actionPerformed(ActionEvent e) {
 
             try {
-                MedicationRequestController bav = new MedicationRequestController(this.patient, model);
+                MedicationRequestController bav = new MedicationRequestController(patient);
 
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());

@@ -11,13 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *This class is used to create the DB connection once
  * @author immacolata
  */
 public class ConnectionSingleton {
-        // static members
-    private static Connection instance = null;
     
+    private static Connection instance = null;
+
     public synchronized static Connection getInstance() {
         try {
             if (instance== null || instance.isClosed()) {

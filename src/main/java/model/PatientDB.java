@@ -1,4 +1,3 @@
-
 package model;
 
 import connectionDB.ConnectionSingleton;
@@ -10,20 +9,26 @@ import java.sql.Statement;
 
 public class PatientDB implements userDB {
 
-       
     private Connection conn;
     private static PreparedStatement pst;
     private static ResultSet rs;
     private static Statement st;
 
     public PatientDB() {
-      
+
     }
 
+    /**
+     * this method searchs in db the user
+     *
+     * @param cf: fiscal code of the user
+     * @param password: password of the users
+     * @return the user
+     */
     @Override
     public UserModel findUser(String cf, String password) {
         try {
-            conn =ConnectionSingleton.getInstance();
+            conn = ConnectionSingleton.getInstance();
             if (!cf.equals("") && !password.equals("")) {
                 String query = "SELECT * FROM `users` WHERE cf=? and password=?";
                 pst = conn.prepareStatement(query);
@@ -45,9 +50,15 @@ public class PatientDB implements userDB {
             System.out.println(ex.getMessage());
             return null;
         } finally {
-                try { rs.close(); } catch (SQLException e) { }
-                try { pst.close(); } catch (SQLException e) { }
+            try {
+                rs.close();
+            } catch (SQLException e) {
             }
+            try {
+                pst.close();
+            } catch (SQLException e) {
+            }
+        }
     }
-    
+
 }

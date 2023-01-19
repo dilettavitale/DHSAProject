@@ -247,7 +247,10 @@ public class PatientView extends javax.swing.JFrame {
     private javax.swing.JLabel lablename;
     private javax.swing.JButton viewMedical;
     // End of variables declaration//GEN-END:variables
-
+   /**
+     * This method adds a listener to the JButton that can make start the call
+     * @param listener it is calculated in the controller and it makes start the call
+     */
     public void addCallListener(ActionListener listener) {
         callbutt.addActionListener(listener);
 
@@ -264,11 +267,18 @@ public class PatientView extends javax.swing.JFrame {
     public void setLabelcf(String s) {
         labelcf.setText(s);
     }
-
+    /**
+     * This method adds a listener to the JButton that can make load a blood analysis
+     * @param listener it is calculated in the controller and it makes the patient load the blood analysis
+     */
     public void addLoadBloodAnalysisListener(ActionListener listener) {
         bloodAnalysis.addActionListener(listener);
 
     }
+        /**
+     * This method adds a listener to the JButton that opens the MedicationRequestView
+     * @param listener it is calculated in the controller and it opens the MedicationRequestView
+     */
 
     public void addMedicationRequestListener(ActionListener listener) {
         viewMedical.addActionListener(listener);

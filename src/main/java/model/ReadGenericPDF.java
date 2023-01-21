@@ -9,7 +9,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-public class ReadGenericPDF {
+public class ReadGenericPDF { //THIS CLASS EXTRACT TEXT FROM PDF
 
     File file;
 

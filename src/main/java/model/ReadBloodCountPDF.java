@@ -36,13 +36,13 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
             String codiceLab1 = matcher.group(1);
             String codiceLab2 = matcher.group(2);
             String codiceLab3 = matcher.group(3);
-            String codiceLab = codiceLab1 + " " + codiceLab2 + " " + codiceLab3; //246370007  struttura per analisi cliniche
+            String codiceLab = codiceLab1 + " " + codiceLab2 + " " + codiceLab3; //246370007  SNOMED struttura per analisi cliniche
             bloodCountExam.put("CODICE LABORATORIO", codiceLab);
         }
         pattern = Pattern.compile("Medico :\\s*(\\w+)\\s+(\\w+)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String nomeMedico = matcher.group(1);        //309341008
+            String nomeMedico = matcher.group(1);    
             String cognomeMedico = matcher.group(2);
             bloodCountExam.put("MEDICO", nomeMedico + "" + cognomeMedico);
         }
@@ -55,13 +55,13 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("EMOCROMOCITOMETRICO");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String esame = matcher.group();     // 88308000
+            String esame = matcher.group();
             bloodCountExam.put("EMOCROMOCITOMETRICO", esame);
         }
         pattern = Pattern.compile("\\(RBC\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String rbc = matcher.group(1); // 14089001
+            String rbc = matcher.group(1);
             bloodCountExam.put("RBC", rbc);
         } else {
             System.out.println("Red Blood Cells(RBC) missing");
@@ -69,7 +69,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(WBC\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String wbc = matcher.group(1);    //767002
+            String wbc = matcher.group(1);
             bloodCountExam.put("WBC", wbc);
         } else {
             System.out.println("White Blood Cells(WBC) missing");
@@ -77,7 +77,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(Hgb\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String hemoglobin = matcher.group(1);     // 38082009
+            String hemoglobin = matcher.group(1);
             bloodCountExam.put("HGB", hemoglobin);
         } else {
             System.out.println("Hemoglobin(Hgb) missing");
@@ -85,7 +85,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(Hct\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String hematocrit = matcher.group(1);    //28317006
+            String hematocrit = matcher.group(1);
             bloodCountExam.put("HCT", hematocrit);
         } else {
             System.out.println("Hematocrit(Hct) missing");
@@ -93,7 +93,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(MCV\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String mcv = matcher.group(1);      //104133003
+            String mcv = matcher.group(1);
             bloodCountExam.put("MCV", mcv);
         } else {
             System.out.println("Mean corpuscular volume(MCV) missing");
@@ -101,7 +101,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(MCH\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String mch = matcher.group(1);         //735148007
+            String mch = matcher.group(1);
             bloodCountExam.put("MCH", mch);
         } else {
             System.out.println("Mean corpuscular volume(MCH) missing");
@@ -109,7 +109,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(MCHC\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String mchc = matcher.group(1);        // 37254006
+            String mchc = matcher.group(1);
             bloodCountExam.put("MCHC", mchc);
         } else {
             System.out.println("Mean corpuscular hemoglobin concentration(MCHC) missing");
@@ -117,7 +117,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(RDW\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String rdw = matcher.group(1);       //66842004
+            String rdw = matcher.group(1);
             bloodCountExam.put("RDW", rdw);
         } else {
             System.out.println("Red cell distribution width(RDW) missing");
@@ -125,7 +125,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("\\(PLTS\\)[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String plts = matcher.group(1);     //104086003
+            String plts = matcher.group(1);
             bloodCountExam.put("PLTS", plts);
         } else {
             System.out.println("Platelets(PLTS) missing");
@@ -133,7 +133,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("Granulociti Neutrofili[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String grne = matcher.group(1);        //271035003
+            String grne = matcher.group(1);
             bloodCountExam.put("GRNE", grne);
         } else {
             System.out.println("Neutrophil granulocytes missing");
@@ -141,7 +141,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("Granulociti Eosinofili[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String greo = matcher.group(1);          //CODICE SNOMED 310540006
+            String greo = matcher.group(1);
             bloodCountExam.put("GREO", greo);
         } else {
             System.out.println("Eosinophilic granulocytes missing");
@@ -149,7 +149,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("Granulociti Basofili[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String grba = matcher.group(1);   // 271038001
+            String grba = matcher.group(1);
             System.out.println("Basophil granulocytes :" + grba);
             bloodCountExam.put("GRBA", grba);
         } else {
@@ -158,7 +158,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("Linfociti[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String ly = matcher.group(1);       //CODICE SNOMED 271036002
+            String ly = matcher.group(1);
             bloodCountExam.put("LY", ly);
         } else {
             System.out.println("lymphocytes missing");
@@ -166,7 +166,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
         pattern = Pattern.compile("Monociti[\\s]*(.*)");
         matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String mo = matcher.group(1);           //CODICE SNOMED  271037006
+            String mo = matcher.group(1);
             bloodCountExam.put("MO", mo);
         } else {
             System.out.println("monocytes missing");

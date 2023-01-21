@@ -38,7 +38,7 @@ public class FhirClient {
     List<String> commonUnit = Arrays.asList("%", "x10^3/µL", "x10^6/µL", "fL", "g/dL", "pg", "x10^6/µL", "dL", "mL", "pL");
 
     public FhirClient() {
-        create_bloodcount_SnomedDictionary();
+        create_bloodcount_SnomedDictionary();     //INITIALIZE AND POPULATE USEFUL DICTIONARY
         create_medreq_SnomedDictionary();
         create_medreq_inenglish();
     }
@@ -69,7 +69,7 @@ public class FhirClient {
         medreqsnomedID.put("KETOPROFENE", "10099000");
     }
 
-    private void create_medreq_inenglish() {
+    private void create_medreq_inenglish() {  //FASTEST WAY TO TRANSLATE ITALIAN DRUGS IN ENGLISH
         medreqinenglish.put("AMOXICILLINA", "AMOXICILLIN");
         medreqinenglish.put("ACIDO FOLICO", "FOLIC ACID");
         medreqinenglish.put("KETOPROFENE", "KETOPROFEN");
@@ -167,7 +167,7 @@ public class FhirClient {
                 dr.addResult(observation);
             }
         }
-        MethodOutcome outcomeVR = FHIR.client.create()
+        MethodOutcome outcomeVR = FHIR.client.create()  //CREATE A RESOURCE OUTCOME WITH DIAGNOSTIC REPORT INSIDE IT
                 .resource(dr)
                 .prettyPrint()
                 .encodedJson()
@@ -175,11 +175,11 @@ public class FhirClient {
 
     }
 
-    private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE
+    private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE (THIS STRING IS NOT USEFUL IN THIS ISTANCE)
         return key.equals("CODICE FISCALE") || key.equals("MEDICO") || key.equals("CODICE LABORATORIO") || key.equals("EMOCROMOCITOMETRICO") || key.equals("DATA");
     }
 
-    private String getUnitFromString(String string, List<String> commonUnit) {
+    private String getUnitFromString(String string, List<String> commonUnit) { //COMPARE STRING TAKEN FROM PDF WITH COMMON UNITS OF MEASURMENT IN ORDER TO SAVE THE ONE READ
         for (String unit : commonUnit) {
             if (string.contains(unit)) {
                 return unit;

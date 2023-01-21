@@ -22,14 +22,14 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
 
     public void extractInformation(Patient p) throws ParseException  {
         try {
-            String elaboratedText = super.extractText(file);
-            extractInformationBloodExams(elaboratedText,p);
+            String elaboratedText = super.extractText(file);       //FIRST EXTRACT TEXT CALLING METHOD OF CLASS EXTENDED
+            extractInformationBloodExams(elaboratedText,p);        //THEN COLLECT INFORMATION NEEDED
         } catch (IOException ex) {
             Logger.getLogger(ReadBloodCountPDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void extractInformationBloodExams(String text, Patient p) throws ParseException {
+    private void extractInformationBloodExams(String text, Patient p) throws ParseException {     //THERE ARE SEVERAL REG EX TO SEARCH WHAT IS NEEDED
         Pattern pattern = Pattern.compile("Codice Lab:\\s*(\\d+)\\s+(\\d+)\\s+(\\d+)");
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
@@ -201,7 +201,7 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
             String data = matcher.group(1);      
             bloodCountExam.put("DATA", data);
         }
-        client.set_bloodCount_onFhir(bloodCountExam,p);
+        client.set_bloodCount_onFhir(bloodCountExam,p);       //CALL METHOD TO SEND THIS INFORMATION ON FHIR
     }
 
 }

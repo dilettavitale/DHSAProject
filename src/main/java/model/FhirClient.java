@@ -38,7 +38,7 @@ public class FhirClient {
     List<String> commonUnit = Arrays.asList("%", "x10^3/µL", "x10^6/µL", "fL", "g/dL", "pg", "x10^6/µL", "dL", "mL", "pL");
 
     public FhirClient() {
-        create_bloodcount_SnomedDictionary();     //INITIALIZE AND POPULATE USEFUL DICTIONARY
+        create_bloodcount_SnomedDictionary();     //INITIALIZE AND POPULATE USEFUL DICTIONARY WITCH IS STORED CORRESPONDING SNOMED CODE
         create_medreq_SnomedDictionary();
         create_medreq_inenglish();
     }
@@ -63,7 +63,7 @@ public class FhirClient {
         bloodcountsnomedID.put("MO", "271037006");
     }
 
-    private void create_medreq_SnomedDictionary() {
+    private void create_medreq_SnomedDictionary() {      //TOY EXAMPLE JUST THIS THREE DRUGS
         medreqsnomedID.put("AMOXICILLINA", "27658006");
         medreqsnomedID.put("ACIDO FOLICO", "6247001");
         medreqsnomedID.put("KETOPROFENE", "10099000");
@@ -110,7 +110,7 @@ public class FhirClient {
                 l.add(doserate);
                 dos.setDoseAndRate(l);
                 mr.addDosageInstruction(dos);
-                MethodOutcome outcomeMR = FHIR.client.create()
+                MethodOutcome outcomeMR = FHIR.client.create()        //ENCAPSULATE MED REQUEST IN AN OUTCOME OBJECT
                         .resource(mr)
                         .prettyPrint()
                         .encodedJson()

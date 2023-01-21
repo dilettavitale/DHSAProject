@@ -31,7 +31,7 @@ public class ReadGenericPDF { //THIS CLASS EXTRACT TEXT FROM PDF
                 // Set the page interval to extract. If you don't, then all pages would be extracted.
                 stripper.setStartPage(p);
                 stripper.setEndPage(p);
-                String text = stripper.getText(document);
+                String text = stripper.getText(document);  //THIS METHOD DO THE MAGIC
                 totaltext += text;
                 String textLenghtString = String.format("Text lenght of page %d:", p);
                 String pageStr = String.format("page %d:", p);

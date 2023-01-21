@@ -25,19 +25,19 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
 
     public void extractInformation(Patient p,Practitioner pr) throws ParseException {
         try {
-            String elaboratedText = super.extractText(file);
-            extractInformationMedicalPrescription(elaboratedText,p,pr);
+            String elaboratedText = super.extractText(file);         //EXTRACT TEST CALLING EXTENDED CLASS'S METHOD
+            extractInformationMedicalPrescription(elaboratedText,p,pr);   //THEN COLLECT INFORMATION
         } catch (IOException ex) {
             Logger.getLogger(ReadBloodCountPDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void extractInformationMedicalPrescription(String text,Patient p,Practitioner pr) throws ParseException {
-        List<String> commonDrugs = Arrays.asList("PARACETAMOLO", "IBUPROFENE", "ASPIRINA", "AMOXICILLINA", "LOSARTAN",
+        List<String> commonDrugs = Arrays.asList("PARACETAMOLO", "IBUPROFENE", "ASPIRINA", "AMOXICILLINA", "LOSARTAN",  //LIST OF COMMON DRUGS IN ITALIAN
                 "ATORVASTATINA", "ENALAPRIL", "RAMIPRIL", "BISOPROLOLO", "OMEPRAZOLO",
                 "CLOPIDOGREL", "LEVOTIROXINA", "METFORMINA", "ACIDO ACETILSALICILICO",
                 "LERCANIDIPINA", "METOTRESSATO", "MELOXICAM", "CANDESARTAN", "KETOPROFENE", "ACIDO FOLICO", "FOSFOMICINA", "INTERFOS");
-
+        //A SERIES OF REG EX TO COLLECT WHAT IS NEEDED
         SimpleDateFormat dataformat = new SimpleDateFormat("dd/M/yyyy");
         Date dataprescrizione = null;
         Pattern pattern = Pattern.compile("CODICE FISCALE MEDICO:\\s*(\\w+)");
@@ -56,7 +56,7 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
             String data = matcher.group(1);
             dataprescrizione = dataformat.parse(data);
         }
-
+        //ITERATE ON COMMON DRUGS TO CHECK WHAT IS THE ONE ON MEDICAL PRESCRIPTION
         for (String i : commonDrugs) {
             pattern = Pattern.compile(i + ".*(\r?\n)");
             matcher = pattern.matcher(text);

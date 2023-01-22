@@ -196,7 +196,7 @@ public class DoctorWelcomePage extends javax.swing.JFrame {
          */
     }//GEN-LAST:event_addJListListener
     /**
-     * This method adds a listener to the JList that shows the patient's of the doctor
+     * This method adds a listener to the JList that shows the patients of the doctor
      * @param listener it is calculated in the controller and it opens the page of the selected patient
      */
     public void addJListListener(MouseListener listener) {

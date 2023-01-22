@@ -28,7 +28,11 @@ public class ReadBloodCountPDF extends ReadGenericPDF {
             Logger.getLogger(ReadBloodCountPDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+  /*
+     * This method using regular expression search crucial informations of blood analysis
+     * @param text : text that contains blood analysis' information
+     * @param p : report's patient
+      */
     private void extractInformationBloodExams(String text, Patient p) throws ParseException {     //THERE ARE SEVERAL REG EX TO SEARCH WHAT IS NEEDED
         Pattern pattern = Pattern.compile("Codice Lab:\\s*(\\d+)\\s+(\\d+)\\s+(\\d+)");
         Matcher matcher = pattern.matcher(text);

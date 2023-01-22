@@ -26,7 +26,9 @@ import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
-
+ /*
+     * This class allows to send to FHIR server medication requests and diagnostic reports    
+  */
 public class FhirClient {
 
     private final HashMap<String, String> medreqinenglish = new HashMap<>();
@@ -86,7 +88,13 @@ public class FhirClient {
     public HashMap<String, String> get_bloodcount_SnomedID() {
         return bloodcountsnomedID;
     }
-
+     /*
+     * This method send medication request on FHIR server
+     * @param drug : drugs found on request
+     * @param dose : doses of drugs
+     * @param p : request's patient
+     * @param pr : request's pratictioner
+      */
     public void set_medprescription_OnFhir(String drug, String dose, Date date, Patient p, Practitioner pr) {
         for (Map.Entry<String, String> entry : medreqsnomedID.entrySet()) {
             if (entry.getKey().equals(drug)) {
@@ -121,7 +129,12 @@ public class FhirClient {
         }
 
     }
-
+     /*
+     * This method send diagnostic report on FHIR server
+     * @param bloodcount : dictionary with all the molecules found in it
+     * @param p : request's patient
+     * @throws ParseException
+      */
     public void set_bloodCount_onFhir(HashMap<String, String> bloodcount, Patient p) throws ParseException {
         Organization lab = new Organization();
         lab.setId(bloodcount.get("CODICE LABORATORIO"));
@@ -174,7 +187,10 @@ public class FhirClient {
                 .execute();
 
     }
-
+     /*
+     * This method check if a word is admitted or not
+     * @param key: word to be checked 
+      */
     private boolean isInvalidKey(String key) {        // IF KEYS ARE THIS STRING RETURN TRUE (THIS STRING IS NOT USEFUL IN THIS ISTANCE)
         return key.equals("CODICE FISCALE") || key.equals("MEDICO") || key.equals("CODICE LABORATORIO") || key.equals("EMOCROMOCITOMETRICO") || key.equals("DATA");
     }

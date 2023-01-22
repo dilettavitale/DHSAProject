@@ -16,7 +16,10 @@ public class ReadGenericPDF { //THIS CLASS EXTRACT TEXT FROM PDF
     public ReadGenericPDF(File file) {
         this.file = file;
     }
-
+  /*
+     * This method extract text from a generic PDF
+     * @param file : File pdf
+      */
     public String extractText(File file) throws IOException {
         String totaltext = null;
         try (PDDocument document = PDDocument.load(file)) {

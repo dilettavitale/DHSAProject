@@ -31,7 +31,13 @@ public class ReadMedicationRequestPDF extends ReadGenericPDF {
             Logger.getLogger(ReadBloodCountPDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+   /*
+     * This method using regular expression search crucial informations of medical prescription
+     * @param text : text that contains prescription's information
+     * @param p : prescription's patient
+     * @param pr : prescription's practitioner
+     * @throws ParseException
+      */
     private void extractInformationMedicalPrescription(String text,Patient p,Practitioner pr) throws ParseException {
         List<String> commonDrugs = Arrays.asList("PARACETAMOLO", "IBUPROFENE", "ASPIRINA", "AMOXICILLINA", "LOSARTAN",  //LIST OF COMMON DRUGS IN ITALIAN
                 "ATORVASTATINA", "ENALAPRIL", "RAMIPRIL", "BISOPROLOLO", "OMEPRAZOLO",

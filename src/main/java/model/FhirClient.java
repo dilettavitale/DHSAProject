@@ -132,7 +132,7 @@ public class FhirClient {
      /*
      * This method send diagnostic report on FHIR server
      * @param bloodcount : dictionary with all the molecules found in it
-     * @param p : request's patient
+     * @param p : diagnostic report's patient
      * @throws ParseException
       */
     public void set_bloodCount_onFhir(HashMap<String, String> bloodcount, Patient p) throws ParseException {

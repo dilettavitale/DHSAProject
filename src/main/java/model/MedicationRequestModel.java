@@ -15,11 +15,20 @@ import org.hl7.fhir.r4.model.Practitioner;
 import org.hl7.fhir.r4.model.Reference;
 import view.MedicationRequestView;
 
+/**
+ *
+ * @author immacolata
+ */
 public class MedicationRequestModel {
 
     private Patient patient;
     private List<MedicationRequest> med = new ArrayList();
 
+    /**
+     * This model manipulates the data to show in the MedicationRequestView
+     *
+     * @param patient 
+     */
     public MedicationRequestModel(Patient patient) {
         this.patient = patient;
     }
@@ -32,6 +41,16 @@ public class MedicationRequestModel {
         public String status;
         public String requester;
 
+        /**
+         *
+         * this class is used to manipulate the data to insert in the jList in the MedicationRequestView
+         *
+         * @param name : patient name 
+         * @param data : prescription date
+         * @param status : prescription status
+         * @param link : fhir link of the prescription
+         * @param requester : doctor who made the prescription 
+         */
         public RowTable(String name, String data, String status, String link, String requester) {
             this.name = name;
             this.data = data;
@@ -81,6 +100,10 @@ public class MedicationRequestModel {
         }
     }
 
+    /**
+     * this method find the patient's prescriptions
+     * @return the list of medical prescriptions
+     */
     public ArrayList listMedRequest() {
         String nameGP = "";
         ArrayList<RowTable> list = new ArrayList();

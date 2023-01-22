@@ -87,10 +87,16 @@ public class PatientPFromDocController {
 
         }
     }
-
+    /**
+     * This class makes the doctor add the medication request in FHIR
+     */
     public class MedicalRequestListener implements ActionListener {
 
         @Override
+        /**
+         * This method makes the doctor add the medication as soon as he clicks on the button
+         * @param e the click on the button
+         */
         public void actionPerformed(ActionEvent e) {
 
             try {
@@ -112,12 +118,19 @@ public class PatientPFromDocController {
     public class BloodAnalysisListener implements ActionListener {
 
         private Patient patient;
-
+        /**
+         * This class shows the list of the diagnostic reports' dates of the patient
+         * @param patient 
+         */
         public BloodAnalysisListener(Patient patient) {
             this.patient = patient;
         }
-
+        
         @Override
+        /**
+         * This method shows the list as soon as the dpctor clicks on the button
+         * @param e the click on the button
+         */
         public void actionPerformed(ActionEvent e) {
 
             BloodAnalysisController bav = new BloodAnalysisController(this.patient);
